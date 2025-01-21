@@ -193,9 +193,9 @@ class StarterSite extends Timber\Site
 	*/
 	// public function widget_area() {
 	// 	register_sidebar( array(
-	// 		'name'          => esc_html__( 'Sidebar', 'themename' ),
+	// 		'name'          => esc_html__( 'Sidebar', 'henderson' ),
 	// 		'id'            => 'sidebar-1',
-	// 		'description'   => esc_html__( 'Add widgets here.', 'themename' ),
+	// 		'description'   => esc_html__( 'Add widgets here.', 'henderson' ),
 	// 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 	// 		'after_widget'  => '</section>',
 	// 		'before_title'  => '<h2 class="widget-title">',
@@ -277,7 +277,7 @@ class StarterSite extends Timber\Site
 		
 	// *** login title ***
 	public function login_logo_url_title() {
-		return 'themename';
+		return 'henderson';
 	}
 
 	// *** Remove unecessary menu items for all but Administrators ***
@@ -426,7 +426,7 @@ class StarterSite extends Timber\Site
 	 */
 	public function theme_register_nav_menus() {
 		register_nav_menus( array(
-			'primary_menu' => esc_html__( 'Primary Menu', 'themename' ),
+			'primary_menu' => esc_html__( 'Primary Menu', 'henderson' ),
 		) );		
 	}
 
@@ -572,10 +572,11 @@ class StarterSite extends Timber\Site
 	/*************************
 	 * Load Google Fonts
 	 **************************/
-	public function loadGoogleFonts() {
+	public function loadGoogleFonts()
+	{
 		echo '<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">';
+		<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">';
 	}
 
 

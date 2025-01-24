@@ -208,9 +208,9 @@ class StarterSite extends Timber\Site
 		echo '
 			<style type="text/css">
 				.login #login h1 a {
-					background-image: url(' . get_stylesheet_directory_uri() . '/static/images/logo_horizontal_reverse.svg);
+					background-image: url(' . get_stylesheet_directory_uri() . '/static/images/hp-logo-white.svg);
 					background-size: contain;
-				background-position: center;
+				    background-position: center;
 					width: 100%;
 				}
 				.login #login form label {
@@ -229,7 +229,7 @@ class StarterSite extends Timber\Site
 				}
 		
 				body {
-					background: #1d2327 !important;
+					background: #000 !important;
 				}
 				// body{
 					
@@ -242,29 +242,29 @@ class StarterSite extends Timber\Site
 				// }
 		
 				.login #login form {
-					background: #2c3338;
+					background: #12365B;
 					border: none;
 					border-radius: 5px;
 				}
 				.login #login form .button-secondary {
-					color: #2c3338;
+					color: #12365B;
 					opacity: .7;
 					transition: .3s;
 				}
 		
 				.login #login form input:focus {
-					border-color: #03554b;
-					box-shadow: 0 0 0 1px #03554b;
+					border-color: #727272;
+					box-shadow: 0 0 0 1px #727272;
 				}
 				.login #login form .button-primary {
-					background: #03554b;
-					border-color: #03554b;
+					background: #727272;
+					border-color: #727272;
 					transition: .3s;
 				}
 		
 				.login #login form .button-primary:hover {
-					background: #012a25;
-					border-color: #012a25;
+					background: #2F95FF;
+					border-color: #2F95FF;
 				}
 			</style>';
 	}
@@ -308,10 +308,10 @@ class StarterSite extends Timber\Site
 	}
 
 	/* Use Options Page Globally */
-	// public function options_page_global( $context ) {
-	// 	$context['options'] = get_fields('option');
-	// 	return $context;
-	// }
+	public function options_page_global( $context ) {
+		$context['options'] = get_fields('option');
+		return $context;
+	}
 
 	/* Custom Backend Logo */
 	public function admin_custom_logo() {
@@ -321,7 +321,7 @@ class StarterSite extends Timber\Site
 		}
 		#wpadminbar #wp-toolbar #wp-admin-bar-root-default #wp-admin-bar-wp-logo .ab-item .ab-icon:before {
 			display: block;
-			background-image: url(' . get_stylesheet_directory_uri() . '/static/images/logo_horizontal_reverse.svg);
+			background-image: url(' . get_stylesheet_directory_uri() . '/static/images/hp-logo-white.svg);
 			background-position: center;
 			background-size: contain;
 			background-repeat: no-repeat;
@@ -329,10 +329,10 @@ class StarterSite extends Timber\Site
 			width: 144px;
 		}
 		#wpadminbar {
-			background: #1d2327;
+			background: #000;
 		}
 		#wpadminbar .menupop .ab-sub-wrapper {
-			// background: #2c3338;
+			// background: #12365B;
 		}
 		#adminmenu a{
 			// color: #fff;
@@ -357,7 +357,7 @@ class StarterSite extends Timber\Site
 		#wpadminbar #wp-toolbar #wp-admin-bar-top-secondary li.hover > a:before,
 		#wpadminbar #wp-toolbar #wp-admin-bar-top-secondary li:hover > a:before,
 		#wpadminbar #wp-toolbar #wp-admin-bar-top-secondary #adminbarsearch:hover:before {
-			color: #5B9A92;
+			color: #2F95FF;
 		}
 	</style>
 	';
@@ -461,7 +461,7 @@ class StarterSite extends Timber\Site
 		#wpwrap #adminmenumain #adminmenu,
 		#wpwrap #adminmenumain #adminmenuback,
 		#wpwrap #adminmenumain #adminmenuwrap {
-			background-color: #1d2327;
+			background-color: #000;
 		}
 
 		#wpwrap #adminmenumain #adminmenu .wp-has-current-submenu .wp-submenu {
@@ -482,8 +482,8 @@ class StarterSite extends Timber\Site
 
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li a:hover,
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li a:focus {
-			color: #5B9A92;
-			box-shadow: inset 4px 0 0 0 #5B9A92;
+			color: #2F95FF;
+			box-shadow: inset 4px 0 0 0 #2F95FF;
 		}
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li a:hover .wp-menu-image:before, 
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li a:focus .wp-menu-image:before, 
@@ -491,43 +491,43 @@ class StarterSite extends Timber\Site
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li.opensub a.menu-top .wp-menu-image:before, 
 		#collapse-button:hover,
 		#collapse-button:focus {
-			color: #5B9A92;
+			color: #2F95FF;
 		}
 
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li a.wp-has-current-submenu,
 		.wp-core-ui .button-primary {
-			background: #03554b;
+			background: #727272;
 			color: white !important;
 		}
 		.wp-core-ui .button-primary {
-			border-color: #03554b;
+			border-color: #727272;
 		}
 		.wp-core-ui .button {
-			color: #03554b;
-			border-color: #03554b;
+			color: #727272;
+			border-color: #727272;
 			transition: .3s;
 		}
 		.wp-core-ui .button:focus,
 		.wrap .page-title-action:focus {
-			box-shadow: 0 0 0 1px #fff, 0 0 0 3px #03554b;
+			box-shadow: 0 0 0 1px #fff, 0 0 0 3px #727272;
 		}
 		.wrap .page-title-action {
-			border: 1px solid #03554b;
-			color: #03554b;
+			border: 1px solid #727272;
+			color: #727272;
 			transition: .3s;
 		}
 
 		.wp-core-ui .button-primary:focus,
 		.wp-core-ui .button-primary:hover {
-			background: #012a25;
-			border-color: #012a25;
+			background: #2F95FF;
+			border-color: #2F95FF;
 		}
 		.wp-core-ui .button:focus,
 		.wp-core-ui .button:hover,
 		.wrap .page-title-action:focus,
 		.wrap .page-title-action:hover {
-			color: #012a25;
-			border-color: #012a25;
+			color: #2F95FF;
+			border-color: #2F95FF;
 		}
 
 	</style>

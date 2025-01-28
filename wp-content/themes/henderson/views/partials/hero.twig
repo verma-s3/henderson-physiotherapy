@@ -1,0 +1,22 @@
+{% import './components/image.twig' as Image %}
+
+{% if not fn('is_page',"8") %}
+	<div class="hero padding-lr">
+		<div class="not-home container">
+			{% if fn('is_page',[14,16,18,20,22]) %}
+				<img class="img-responsive" src="{{Image(field.meta('banner_image')).src}}" alt="{{Image(field.meta('banner_image')).alt}}"/>
+				<div class="content">
+					<h1>{{field.meta('title')}}</h1>
+					<p class="subtitle">{{field.meta('subtitle')}}</p>
+				</div>
+				{# {% elseif fn('is_singular','products') %} #}
+			{% endif %}
+		</div>
+	</div>
+{% endif %}
+{# if the page is home page #}
+{% if fn('is_page',"8") %}
+	<div class="hero">
+		<img class="img-responsive" src="{{Image(field.meta('hero_banner')).src}}" alt="{{Image(field.meta('hero_banner')).alt}}"/>
+	</div>
+{% endif %}

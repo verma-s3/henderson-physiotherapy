@@ -53,7 +53,7 @@ define('NONCE_SALT',       'c=l.M gfpSJOJ1vMn9+(c[Y.bjiZI,y|&HWzI&?>_2l^SkWh jf.
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 
 /** Absolute path to the WordPress directory. */

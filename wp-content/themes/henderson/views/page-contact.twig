@@ -1,0 +1,56 @@
+{% import './components/image.twig' as Image %}
+{% import './components/button.twig' as Button %}
+{% extends "base.twig" %} 
+
+{% block content %}
+    <section class="{{field.slug}}-page padding" id="{{field.slug}}-page">
+        <div class="container">
+			<div class="wrapper">
+				<div class="full-contact-details" data-aos="fade-in">					
+					<div class="address-details">
+						<p class="address">{{ options.address }}</p>
+                        <div class="phone-number"> 
+                            <span>Phone:</span>
+                            <a href="tel:{{ options.phone_number }}" aria-label="Phone us at {{options.phone_number}}">
+                                {% set phoneNumber = options.phone_number %}
+                                {% include 'partials/phone-number.twig' %}
+                            </a>
+                        </div>
+                        <div class="fax-number"> 
+                            <span>Fax:</span>
+							<span>{% set phoneNumber = options.fax_number %}
+							{% include 'partials/phone-number.twig' %}</span>
+						</div>
+					</div>
+                    <div class="book-an-appt">
+                    {% set book = field.meta('book_an_appointment') %}
+                        <h2 class="h4">{{book.title}}</h2>
+                        <p class="subtitle">{{book.description}}</p>
+                        <div class="btns">
+                        {% set btn1 = book.button_1 %}
+                        {% set btn2 = book.button_2 %}
+                            <a href="{{btn1.link}}" class="custom-btn">{{btn1.name}}</a>
+                            <a href="{{btn2.link}}" class="custom-btn">{{btn2.name}}</a>
+                        </div>
+                    </div>
+                    <div class="hours">
+                        <h2 class="h4">Hours</h2>
+                        <div class="hours-details">
+                            {{field.meta('hours')}}
+                        </div>
+                    </div>
+                    <div class="connect-with-us">
+						<h2 class="h4">Connect with us</h2>
+						{% include 'partials/social-media.twig' %}
+					</div>
+				</div>
+
+				<div class="contact-form-details" data-aos="fade-in">
+                    <h2>Drop Us A Line</h2>
+					{{fn('do_shortcode','[contact-form-7 id="19e4ef8" title="Contact form"]')}}
+				</div>
+			</div>
+		</div>
+    </section>
+
+{% endblock %}

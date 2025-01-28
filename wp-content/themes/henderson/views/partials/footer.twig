@@ -1,0 +1,49 @@
+<div id="contact" class="contact container">
+	<div class="contact-info">
+		<a class="site-logo" href="{{site.url}}" rel="home" aria-label="{{site.name}}">
+			{# {{source (directory ~ '/static/images/hp-logo-white.svg') }} #}
+            <img src="{{site.theme.link}}/static/images/hp-logo-white.svg" alt="HP logo White" />
+		</a>
+		<div class="connect-with-us">
+			<h2 class="h4">Connect with us</h2>
+			{% include 'partials/social-media.twig' %}
+		</div>
+		<div class="contact-us">
+			<h2 class="h4">Contact Us</h2>
+			<p class="address">
+				<span class="light-blue">a.
+				</span>
+				<span>{{ options.address }}</span>
+			</p>
+			<p class="phone-number">
+				<span class="light-blue">p.
+				</span>
+				<a href="tel:{{ options.phone_number }}" aria-label="Phone us at {{options.phone_number}}">
+					{% set phoneNumber = options.phone_number %}
+					{% include 'partials/phone-number.twig' %}
+				</a>
+			</p>
+            <p class="phone-number">
+				<span class="light-blue">f.
+				</span>
+                    {% set phoneNumber = options.fax_number %}
+					{% include 'partials/phone-number.twig' %}
+			</p>
+
+
+		</div>
+	</div>
+	<div class="copyright center">
+		<span class="copyright-text">&copy;
+			{{"now"|date('Y')}}
+			Henderson Physiotherapy |
+		</span>
+		<span class="site-by">Site by
+			<a href="https://onpoint.ca/" target="_blank" rel="noopener noreferrer" aria-label="link to PSone website">onPoint</a>
+		</span>
+		<span>
+			|
+			<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" aria-label="Link to google terms">Google Terms</a>
+		</span>
+	</div>
+</div>

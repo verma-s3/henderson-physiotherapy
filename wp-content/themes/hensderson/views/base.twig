@@ -12,13 +12,17 @@
 {% block header %}
 	<header class="header padding-lr">
 		<div class="wrapper container">
-			<a
-				class="site-logo" href="{{site.url}}" rel="home">{# {{source (directory ~ '/static/images/SCF_Logo_Colored.svg') }} #}
-			</a>
-
-			<nav id="site-navigation" class="nav-main" role="navigation">
-				{% include "menu.twig" with{'items':menu.get_items} %}
-			</nav>
+			<div class="logos">			
+				<a class="site-logo main-logo" href="{{site.url}}" rel="home">
+					{{source (directory ~ '/static/images/logo/hp-logo.svg') }}
+				</a>
+				<a class="site-logo menu-logo" href="{{site.url}}" rel="home">
+					{{source (directory ~ '/static/images/hp-logo-white.svg') }}
+				</a>
+				<a class="selkirk-site-logo" href="https://selkirkphysio.ca/" target="_blank" rel="noopener noreferrer" aria-label="Selkirk Website">
+					{{source (directory ~ '/static/images/logo/selkirk-logo.svg') }}
+				</a>
+			</div>
 			<div class="button_container" id="toggle" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				<span class="top"></span>
 				<span class="middle"></span>

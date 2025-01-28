@@ -2,6 +2,7 @@ jQuery(document).ready(function($) {
   // fixedHeaderOnScroll();
   $('#toggle').click(function() {
     $(this).toggleClass('active');
+    $('header').toggleClass('header-color');
     $('#overlay').toggleClass('open');
     $('html').toggleClass('hidden');
    });

@@ -158,7 +158,7 @@
         }
     
         h3 {
-            color: var(--pri-500);
+            color: var(--pri-100);
         }
     
     }
@@ -195,63 +195,117 @@ body {
 .button_container {
     display: block;
     position: absolute; // use position fixed fro fixed header
-    top: 47px;
-    right: 9%;
-    height: 27px;
-    width: 49px;
+    top: 0;
+    right: 0;
+    height: 47px;
+    width: 40px;
     cursor: pointer;
     z-index: 500;
     transition: all .25s ease;
 
     &:hover {
-        opacity: .7;
+        .top,
+        .middle,
+        .bottom {
+            // background-color: var(--white);
+            width: 100%;
+            left: 0;
+            right: 0;
+        }
+
+        .text::after {
+            color: var(--pri-100);
+        }
     }
 
     &.active {
+        .top,
+        .bottom,
+        .middle {
+            width: 100%;
+            background: var(--white);
+            left: 0;
+        }
+
         .top {
             transform: translateY(11px) translateX(0) rotate(45deg);
-            background: var(--pri-500);
+
         }
 
         .middle {
             opacity: 0;
-            background: var(--pri-500);
-            width: 100%;
         }
 
         .bottom {
             transform: translateY(-11px) translateX(0) rotate(-45deg);
-            background: var(--pri-500);
-            width: 100%;
+        }
+
+        .text::after {
+            content: "CLOSE";
+            color: var(--white);
+        }
+
+        &:hover {
+            opacity: 1;
+
+            .top,
+            .middle,
+            .bottom {
+                background-color: var(--sec-100);
+                width: 100%;
+            }
+            .text::after {
+                color: var(--sec-100);
+            }
         }
     }
 
     span {
-        background: var(--pri-500);
+        background: var(--pri-100);
         height: 2px;
-        width: 100%;
+        width: 80%;
         position: absolute;
         top: 0;
-        left: 0;
+        left: 10%;
         transition: all .35s ease;
         cursor: pointer;
-
+        border-radius: 25px;
 
         &:nth-of-type(2) {
             top: 11px;
+            left: 0;
+            width: 100%;
         }
 
         &:nth-of-type(3) {
             top: 22px;
         }
+
+        &:nth-of-type(4) {
+            bottom: 0px;
+            top: 28px;
+            width: 100%;
+            left: 0;
+            background: transparent;
+
+            &::after {
+                content: "MENU";
+                color: var(--pri-100);
+                .font-size(10, 10);
+                font-weight: 300;
+                letter-spacing: 2.5px;
+                position: absolute;
+                transition: all .35s ease;
+            }
+        }
     }
 }
 
-@media screen and (min-width: 1024px) {
-    .button_container {
-        display: none;
-    }
-}
+// @media screen and (min-width: 1024px) {
+//     .button_container {
+//         display: none;
+//     }
+// }
 
 // for menu sliding from right to left instead of top to bottom
 // change these settings
@@ -267,7 +321,7 @@ body {
 */
 .overlay {
     position: fixed;
-    background: var(--pri-500);
+    background: var(--pri-100);
     top: 0;
     left: 0;
     width: 100%;
@@ -357,24 +411,26 @@ body {
                     color: var(--white);
                     text-decoration: none;
                     overflow: hidden;
-                    .font-size(60,40);
+                    .font-size(48,24);
                     text-transform: none;
                     margin-top: 0px;
-                    font-weight: 400;
+                    font-weight: 700;
                     margin-bottom: 0;
 
                     &:hover {
                         opacity: 1;
+                        color: var(--sec-100);
                     }
                 }
-                // > ul{
-                //     display: none;
-                //     > li{
-                //         a{
-                //             .font-size(27,23);
-                //         }
-                //     }
-                // }
+                > ul{
+                    display: none;
+                    > li{
+                        a{
+                            .font-size(24,16);
+                            font-weight: 400;
+                        }
+                    }
+                }
                 // &.menu-item-44{
                 //     cursor: pointer;
                 //     a{
@@ -533,20 +589,24 @@ div {
 // }
 
 .custom-btn {
-    background-color: var(--pri-500);
-    border: 2px solid var(--pri-500);
-    padding: 8px 0px;
-    font-weight: 300;
+    background-color: var(--pri-100);
+    border: 2px solid var(--pri-100);
+    padding: 18px 16px;
+    font-weight: 400;
     text-decoration: none;
     display: inline-block;
     font-family: var(--font-primary);
-    font-size: 20px;
-    // border-radius: 50px;
+    .font-size(16,13);
     .center();
-
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--white);
+    @media @min992{
+        letter-spacing: 4px;
+    }
     &:hover {
         background-color: transparent;
-        color: var(--pri-500);
+        color: var(--pri-100);
         opacity: 1;
     }
 }
@@ -565,12 +625,16 @@ img {
     object-fit: cover;
 }
 
+svg{
+    shape-rendering: crispEdges;
+}
+
 /**********************************
 * HEADER
 ***********************************/
 
 header {
-    padding: 30px 0;
+    padding: 28px 0;
     background-color: var(--white);
     width: 100%;
     // max-width: 1920px;
@@ -578,7 +642,7 @@ header {
     box-sizing: border-box;
     //use these css fro fixed header
     position: relative;
-    z-index: 400;
+    z-index: 510;
     // top: 0;
     transition: all 0.3s;
 
@@ -588,17 +652,26 @@ header {
     //     box-shadow: 0 1px 6px 0 rgb(32, 33, 36 / 28%);
     // }
 
+    &.header-color{
+        background-color: var(--pri-100);
+        .main-logo, .selkirk-site-logo{
+            display: none;
+        }
+    }
     .wrapper {
         .menu-alignment();
         justify-content: space-between;
         position: relative;
     }
+    .logos{
+        .display-flex(flex, var(--space-40), row, center);
+    }
 }
 
 .site-logo {
-    display: inline-block;
+    display: block;
     // margin-left: 17px;
-    width: 170px;
+    width: 145px;
     margin-bottom: 0;
     position: relative;
     z-index: 65;
@@ -608,78 +681,29 @@ header {
     }
 
     @media @min1024 {
-        // margin-left: 68px;
-        width: auto;
+        width: 400px;
     }
 
     svg {
-        width: 200px;
+        width: 145px;
         display: block;
-
+        height: auto;
         @media @min768 {
             width: 270px;
         }
 
         @media @min1024 {
-            width: auto;
+            width: 400px;
         }
     }
-
-    // img {
-    //     width: 69px;
-    //     @media @min1024 {
-    //         width: auto;  
-    //     }
-    // }
-
-    // if you want to slide menu from roght to left
-    // svg{
-    //     rect{
-    //         fill: green;
-    //         transition: 2s ease fill;
-    //     }
-    //     &.color{
-    //         rect{
-    //             fill: red;
-    //         }
-    //     }
-    // }
 }
-
-.nav-main {
-    // float: right;
-    // margin-top: 17px;
+.selkirk-site-logo{
     display: none;
-
-    @media @min1024 {
-        display: inline-block;
-    }
-
-    ul {
-        .menu-alignment();
-        > li {
-            display: inline-block;
-            // margin-left: 28px;
-
-            // @media @min1500 {
-            //     margin-left: 64px;
-            // }
-
-            // > ul {
-            //     display: none;
-            // }
-
-            a {
-                color: var(--black);
-                text-decoration: none;
-                font-family: var(--font-primary);
-                font-weight: 500;
-                font-size: 16px;
-
-                &:hover {
-                    color: var(--pri-500);
-                }
-            }
+    @media @min768{
+        display: block;
+        svg {
+            width: 182px;
+            height: auto;
         }
     }
 }

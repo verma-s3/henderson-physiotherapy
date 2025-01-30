@@ -3,8 +3,15 @@
 {% extends "base.twig" %} 
 
 {% block content %}
-    <section class="{{field.slug}}-page" id="{{field.slug}}-page">
-
+    <section class="{{field.slug}}-page padding" id="{{field.slug}}-page">
+			<div class="container">
+				<div class="filters">
+					{{fn('do_shortcode','[searchandfilter query="1" field="news_type"]')}}
+				</div>
+				<div class="filter-results container-top">
+					{{fn('do_shortcode','[searchandfilter query="1" action="show-results"]')}}
+				</div>
+			</div>
     </section>
 
 {% endblock %}

@@ -1,10 +1,138 @@
 {% import './components/image.twig' as Image %}
 {% import './components/button.twig' as Button %}
-{% extends "base.twig" %} 
+{% extends "base.twig" %}
 
 {% block content %}
-    <section class="{{field.slug}}-page" id="{{field.slug}}-page">
+	<section class="{{field.slug}}-page" id="{{field.slug}}-page">
+		<div class="container">
+			<div class="page-description padding">
+				{% set page = field.meta('page_description') %}
+				<div class="wrapper">
+					<h2>{{page}}</h2>
+				</div>
+			</div>
 
-    </section>
+			<div class="story-line container" id="story-line">
+				{% set story = field.meta('our_story') %}
+				<div class="wrapper">
+					<div class="our-story">
+						<div class="image-section">
+							<div class="grad"></div>
+							<img src="{{Image(story.background_image).src}}" alt="{{Image(story.background_image).alt}}" class="img-responsive">
+						</div>
+						<div class="story-details">
+							<div class="wrapper">
+								<h2 class="center">{{story.main_title}}</h2>
+								<div class="content h4">
+									{{story.story_content}}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="our-accomplishments">
+						<h2 class="center">{{story.accomplishment_title}}</h2>
+						<div class="content h4">{{story.accomplishment_desc}}</div>
+						<p class="section-title h4">{{story.sponsor_title}}</p>
+						<div class="sponsor-list">
+							{% for sponsor in story.sponsors %}
+								<img src="{{Image(sponsor.image).src}}" alt="{{Image(sponsor.image).alt}}" class="img-responsive">
+							{% endfor %}
+						</div>
+						<div class="description h5">{{story.sponsor_description}}</div>
+						<div class="btn">
+							<a href="{{story.button.link}}" aria-label="{{story.button.name}}" class="reverse-btn">{{story.button.name}}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="our-mission padding-tb" id="our-mission">
+				{% set mission = field.meta('our_mission') %}
+				<div class="container">
+					<div class="content-section">
+						<div class="content-details">
+							<div class="logo">{{ function('file_get_contents', Image(mission.logo).src) }}</div>
+							<h3 class="h5">{{mission.title}}</h3>
+							<div class="content">{{mission.description}}</div>
+						</div>
+					</div>
+					<div class="image-section">
+						<img src="{{Image(mission.image).src}}" alt="{{Image(mission.image).alt}}" class="img-responsive"/>
+					</div>
+				</div>
+			</div>
+
+			<div class="our-vision padding-bottom" id="our-vision">
+				{% set vision = field.meta('our_vision') %}
+				<div class="container">
+					<div class="content-section">
+						<div class="content-details">
+							<div class="logo">{{ function('file_get_contents', Image(vision.logo).src) }}</div>
+							<h3 class="h5">{{vision.title}}</h3>
+							<div class="content">{{vision.description}}</div>
+						</div>
+					</div>
+					<div class="image-section">
+						<img src="{{Image(vision.image).src}}" alt="{{Image(vision.image).alt}}" class="img-responsive"/>
+					</div>
+				</div>
+			</div>
+
+			<div class="meet-the-team container" id="meet-the-team">
+				{% set page = field.meta('meet_the_team') %}
+				<div class="wrapper padding">
+					<h2 class="center">{{page.title}}</h2>
+					<div class="team-list padding-top">
+						{% for list in page.team %}
+							<div class="list">
+								<div class="image-section">
+									<img src="{{Image(list.profile_image).src}}" alt="{{Image(list.profile_image).alt}}" class="img-responsive"/>
+								</div>
+								<div class="team-content">
+									<h3 class="h5">{{list.name}}</h3>
+									<p class="section-title">{{list.position}}</p>
+									{% set text = list.details %}
+									{% set text_length = text|length %}
+									<div class="content">
+										<div class="main-text">{{ text|slice(0, 195) }}</div>
+										<div class="more-text" style="display: none;">{{ text|slice(195) }}</div>
+									</div>
+									{% if text_length > 195 %}
+										<a href="javascript:void(0);" class="read-more">Read More</a>
+									{% endif %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="btns">
+						<a href="{{page.button.link}}" class="reverse-btn" aria-label="{{page.button.name}} Service">{{page.button.name}}</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="facility padding" id="facility">
+				{% set facil = field.meta('facility') %}
+				<div class="container">
+					<div class="facility-details">
+						<h2 class="h2 center">{{facil.title}}</h2>
+						<div class="content">{{facil.description}}</div>
+					</div>
+					<div class="gallery">
+						<div class="gallery-slider">
+							{% for gal in facil.gallery %}
+								<div class="images">
+									<a href="{{Image(gal).src}}" data-fancybox="galleryImages" data-caption="Gallery Image">
+										<img src="{{Image(gal).src}}" alt="Image Gallery">
+									</a>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</section>
 
 {% endblock %}

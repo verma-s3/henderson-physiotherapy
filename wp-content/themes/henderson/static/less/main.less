@@ -187,7 +187,8 @@ body {
     position: relative;
     background-color: var(--white);
     box-shadow: 0 -20px 13px 4px rgba(0, 0, 0, 11%);
-    @media @min992{
+
+    @media @min992 {
         background-color: var(--neu-100);
     }
 }
@@ -511,7 +512,8 @@ form {
         letter-spacing: 3px;
         text-transform: uppercase;
         .font-size(16, 13);
-        @media @min992{
+
+        @media @min992 {
             letter-spacing: 4px;
         }
 
@@ -604,6 +606,18 @@ div {
     }
 }
 
+.reverse-btn {
+    .custom-btn();
+    background-color: var(--white);
+    color: var(--pri-100);
+    border-color: var(--white);
+
+    &:hover {
+        background-color: var(--pri-100);
+        color: var(--white);
+    }
+}
+
 img {
     height: auto;
 }
@@ -638,7 +652,8 @@ header {
     z-index: 510;
     // top: 0;
     transition: all 0.45s ease-in-out;
-    @media @min992{
+
+    @media @min992 {
         background-color: var(--neu-100);
     }
 
@@ -735,7 +750,6 @@ header {
 }
 
 .hero {
-    margin-bottom: 80px;
     .not-home {
         .grid();
         .grid(1);
@@ -752,32 +766,37 @@ header {
         h1,
         .subtitle {
             color: var(--white);
-            @media @max992{
+
+            @media @max992 {
                 text-align: center;
             }
         }
 
-        h1{
+        h1 {
             margin-bottom: var(--space-sm);
         }
-        .subtitle{
-            .font-size(36,16);
+
+        .subtitle {
+            .font-size(36, 16);
             .width(600px);
         }
 
-        .content{
+        .content {
             display: flex;
             flex-direction: column;
             justify-content: center;
             background-color: var(--pri-100);
-            @media @max992{ 
-                align-items: center;               
+
+            @media @max992 {
+                align-items: center;
                 padding: var(--space-40) var(--space-24) var(--space-80);
             }
-            @media @min992{
+
+            @media @min992 {
                 margin-left: 10%;
                 position: relative;
-                &::after{
+
+                &::after {
                     content: url("@{images}/shape.png");
                     position: absolute;
                     height: 500px;
@@ -808,27 +827,334 @@ header {
 * HOME PAGE
 ***********************************/
 
+
+/**********************************
+* WHO WE ARE PAGE
+***********************************/
+.who-we-are-page{
+    .container{
+        .page-description{
+            .wrapper{
+                .width(1226px, auto);
+            }
+        }
+
+        .story-line{
+            background-color: var(--pri-100);
+            .b-20t();
+            overflow: hidden;
+            .wrapper{
+                h2, .h4, p, div, .h5{
+                    color: var(--white);
+                }
+                .our-story{
+                    position: relative;
+                    margin-bottom: var(--space-40);
+                    @media @min992{
+                        margin-bottom: var(--space-lg);
+                    }
+                    .image-section{
+                        .b-20();
+                        overflow: hidden;
+                        background-color: var(--pri-100);
+                        .grad{
+                            position: absolute;
+                            .grad-bg();
+                            bottom: 0;
+                            display: block;
+                            width: 100%;
+                            height: 70%;
+                        }
+                    }
+                    .story-details{
+                        z-index: 10;
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        .content{
+                            .width(1364px, auto);
+                            margin-top: var(--space-24);
+                        }
+                    }
+                }
+
+                .our-accomplishments{
+                    text-align: center;
+                    .content{
+                        margin-block: var(--space-24) var(--space-40);
+                        .width(1364px, auto);
+                        @media @min992{
+                            margin-block: var(--space-24) var(--space-lg);
+                        }
+                    }
+                    .sponsor-list{
+                        .width(950px, auto);
+                        img{
+                            aspect-ratio: 1;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+
+        .our-mission, .our-vision{
+            .container{
+                max-width: 1920px;
+                .grid(1);
+                gap: var(--space-40);
+                padding-inline: 40px;
+                @media @min992{
+                    .grid(2);
+                    gap: 0px;
+                    align-items: center;
+                    padding-inline: 0px;
+                }
+                @media @min1640{
+                    grid-template-columns: 700px 1fr;
+                }
+                .content-section{
+                    svg{.s-100()}
+                    h3{
+                        margin-block: var(--space-24) var(--space-sm);
+                        @media @min992{
+                            margin-block: var(--space-40) var(--space-24);
+                        }
+                    }
+                    @media @min992{
+                        padding-inline: 15%;
+                    }
+                }
+                .image-section{
+                    .b-20();
+                    overflow: hidden;
+                    @media @min992{
+                        .b-20l();
+                    }
+                    img{
+                        transform: scaleX(1.1);
+                    }
+                }
+            }
+        }
+
+        #our-vision{
+            .container{
+                @media @min1640{
+                    grid-template-columns: 1fr 700px;
+                }
+            }
+            .image-section{
+                @media @min992{
+                    .b-20r();
+                    order: -1;
+                }
+            }
+        }
+        .meet-the-team{
+            background-color: var(--pri-100);
+            .b-20();
+            width: 100%;
+            overflow: hidden;
+            h2, h3, div, p,h4,ul,li, span{
+                color: var(--white);
+            }
+            .team-list{
+                .grid(1);
+                gap: var(--space-40);
+                @media @min768{
+                    .grid(2);
+                    gap: var(--space-lg);
+                }
+                @media @min1280{
+                    .grid(3);
+                    gap: var(--space-80) var(--space-lg);
+                }
+
+                .list{
+                    .image-section{
+                        overflow: hidden;
+                        background-color: var(--pri-100);
+                        .b-20();
+                        margin-bottom: var(--space-24);
+                        img{
+                            transform: scale(1.1);
+                        }
+                    }
+                    .team-content{
+                        .section-title{
+                            font-size: 13px;
+                            letter-spacing: 3px;
+                            margin-block: var(--space-xs) var(--space-sm);
+                            text-transform: uppercase;
+                            @media @min992{
+                                font-size: 16px;
+                                letter-spacing: 4px;
+                            }
+                        }
+
+                        h4{
+                            .h5();
+                            margin-block: var(--space-sm) var(--space-xs);
+                            color: var(--white);
+                        }
+
+                        ul{
+                            // list-style-position: inside;
+                            margin-left: var(--space-24);
+                        }
+
+                        .read-more{
+                            margin-top: var(--space-24);
+                            display: block;
+                            color: var(--sec-100);
+                        }
+
+                        .main-text, .more-text, .main-text p{
+                            display: inline;
+                        }
+
+                    }
+                }
+            }
+            .btns{
+                margin-top: var(--space-40);
+                text-align: center;
+            }
+        }
+
+        .facility{
+            .facility-details{
+                .width(1226px, auto);
+                h2{
+                    margin-bottom: var(--space-24);
+                }
+            }
+            .gallery{ 
+                margin-top: var(--space-40);
+                @media @min992{
+                    margin-top: var(--space-lg);
+                }
+                .gallery-slider{
+                    .slick-list{
+                        margin-inline: -8px;
+                    }
+                    .images{
+                        .b-20();
+                        overflow: hidden;
+                        aspect-ratio: 1;
+                        max-width: 316px;
+                        margin-inline: var(--space-xs);
+                        img{
+                            aspect-ratio: 1;
+                            max-width: 316px;
+                            object-fit: cover;
+                            object-position: center;
+                        }
+                    }
+                } 
+            }
+        }
+    }
+}
+/**********************************
+* WHAT WE DO PAGE
+***********************************/
+.what-we-do-page{
+    .container{
+        .page-description{
+            .wrapper{
+                .width(1226px, auto);
+                .content{
+                    margin-top: var(--space-24);
+                }
+            }
+        }
+        .services{
+            background-color: var(--pri-100);
+            .b-20();
+            width: 100%;
+            overflow: hidden;
+            h2, h3, div, p{
+                color: var(--white);
+            }
+            .services-list{
+                .grid(1);
+                gap: var(--space-40);
+                @media @min768{
+                    .grid(2);
+                }
+                @media @min1280{
+                    .grid(3);
+                    gap: var(--space-96) 74px;
+                }
+                .list{
+                    .logo{
+                        margin-bottom: var(--space-xs);
+                        svg{
+                         .s-100();
+                        }
+                    }
+                    .content{
+                        padding-block: var(--space-xs) var(--space-24);
+                    }
+                    .btns{
+                        .display-flex(flex, var(--space-24), row, unset);
+                        flex-wrap: wrap;
+                        .reverse-btn{
+                            padding-block: var(--space-xs);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/**********************************
+* SINGLE THERAPY PAGES
+***********************************/
+
+
+/**********************************
+* PATIENTS PAGE
+***********************************/
+
+
+/**********************************
+* NEWS AND INSIGHTS PAGE
+***********************************/
+
+
+/**********************************
+* SINGLE NEWS PAGE
+***********************************/
+
+
 /**********************************
 * CONTACT PAGE
 ***********************************/
 #contact-page {
-    .container{
+    .container {
         max-width: 1364px;
-        
+
         .wrapper {
             .display-flex(flex, var(--space-lg), column, flex-start);
             // flex-wrap: wrap;
             justify-content: space-between;
+
             @media @min992 {
                 flex-direction: row;
             }
+
             .full-contact-details {
                 .display-flex(flex, var(--space-40), column, unset);
-    
+
                 @media @min992 {
                     .width(425px);
                 }
-    
+
                 h2 {
                     // color: var(--black);
                     font-weight: 600;
@@ -837,50 +1163,54 @@ header {
                     padding-bottom: var(--space-xs);
                     width: 100%;
                 }
-                .address-details{
+
+                .address-details {
                     .display-flex(flex, var(--space-sm), column, unset);
-                    .phone-number{
-                        a{
+
+                    .phone-number {
+                        a {
                             color: var(--sec-100);
                         }
                     }
-                    .fax-number{
-                        span{
-                            &:nth-of-type(2){
+
+                    .fax-number {
+                        span {
+                            &:nth-of-type(2) {
                                 color: var(--sec-100);
                             }
                         }
                     }
                 }
-                .book-an-appt{
-                    .btns{
+
+                .book-an-appt {
+                    .btns {
                         margin-top: var(--space-sm);
                         .display-flex(flex, var(--space-sm), row, unset);
                         flex-wrap: wrap;
                     }
                 }
 
-                .hours{
-                    .hours-details{
+                .hours {
+                    .hours-details {
                         .display-flex(flex, var(--space-sm), column, unset);
                     }
                 }
-    
+
                 .connect-with-us {
                     .social-media {
                         .display-flex(flex, calc(1.5 * var(--space-unit)), row, flex-start);
-    
+
                         svg {
                             transition: all .35s ease-in-out;
                             .s-40();
-    
-                            path{
+
+                            path {
                                 transition: all .35s ease-in-out;
                                 fill: var(--sec-100);
                             }
-    
+
                             &:hover {
-                                path{
+                                path {
                                     fill: var(--pri-100)
                                 }
                             }
@@ -888,41 +1218,41 @@ header {
                     }
                 }
             }
-    
+
             .contact-form-details {
                 @media @min992 {
                     .width(760px);
                 }
-    
+
                 h2 {
                     margin-bottom: var(--space-40);
                     text-align: center;
                     color: var(--black);
-    
+
                     @media @min992 {
                         margin-bottom: var(--space-lg);
                     }
                 }
-    
+
                 //contact-form
                 .contact-form {
                     .compulsory {
                         color: #B4131B;
                     }
-    
+
                     label {
                         color: #3F4140;
                         width: 100%;
                     }
-    
+
                     .submit-btn {
                         text-align: right;
-    
+
                         p {
                             display: inline-block;
                         }
                     }
-    
+
                     .full-name,
                     .contact-details {
                         p {
@@ -931,7 +1261,7 @@ header {
                             }
                         }
                     }
-    
+
                     input,
                     select,
                     textarea {
@@ -950,7 +1280,7 @@ header {
 ***********************************/
 
 footer {
-    
+
     #contact {
         background-color: var(--pri-100);
         .padding();

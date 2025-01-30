@@ -1,10 +1,40 @@
 {% import './components/image.twig' as Image %}
 {% import './components/button.twig' as Button %}
-{% extends "base.twig" %} 
+{% extends "base.twig" %}
 
 {% block content %}
-    <section class="{{field.slug}}-page" id="{{field.slug}}-page">
+	<section class="{{field.slug}}-page padding-lr" id="{{field.slug}}-page">
+		<div class="container">
+			<div class="page-description padding">
+				{% set page = field.meta('page_description') %}
+				<div class="wrapper">
+					<h2>{{page.title}}</h2>
+					<div class="content">
+						{{page.description}}
+					</div>
+				</div>
+			</div>
 
-    </section>
+			<div class="services container margin-bottom" id="services">
+				{% set page = field.meta('services') %}
+				<div class="wrapper padding">
+					<h2 class="center">{{page.title}}</h2>
+                    <div class="services-list padding-top">
+                        {% for list in page.list %}
+                            <div class="list">
+                                <div class="logo">{{ function('file_get_contents', Image(list.logo).src) }}</div>
+                                <h3 class="h5">{{list.title}}</h3>
+                                <div class="content">{{list.desc}}</div>
+                                <div class="btns">
+                                    <a href="{{list.button_1.link}}" class="reverse-btn" aria-label="{{list.title}} Service">{{list.button_1.name}}</a>
+                                    <a href="{{list.button_2.link}}" class="reverse-btn" aria-label="{{list.title}} Service">{{list.button_2.name}}</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 {% endblock %}

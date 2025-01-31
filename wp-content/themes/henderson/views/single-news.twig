@@ -1,0 +1,52 @@
+{% extends "base.twig" %}
+{% block content %}
+	<div class="content-wrapper">
+		<article class="post-type-{{post.post_type}} padding" id="post-{{ post.ID}}">
+			<section class="article-content container">
+				<div class="article-details" data-aos="fade-in">
+					<h2>{{post.title}}...{{post.meta('news_type')}}</h2>
+					<div class="time-read">
+						<p class="date">{{ post.date|date('F j, Y')}}</p>
+						{% set wordCount = post.meta('news_content')|split(' ')|length %}
+						{% include 'partials/read.twig' %}
+					</div>
+					<div class="break-line"></div>
+					<div class="share-story">
+						{% include 'partials/share.twig' %}
+					</div>
+					<div class="btn">
+						<a class="custom-btn" href="/news-insight/" aria-label="back-btn">Back to news &amp; insights</a>
+					</div>
+				</div>
+				<div class="article-body" data-aos="fade-in">
+					<img src="{{ post.thumbnail.src}}" alt="feature-image"/>
+					{{post.meta('news_content')}}
+				</div>
+			</section>
+
+			<section class="similar-news padding-top" id="similar-news">
+				<div class="container">
+					<h2>Similar News & Insights</h2>
+					<div class="similar-news-list">
+						{% for news in news %}
+							<div class="news-result-div">
+								<h2>{{news.title}}</h2>
+								<div class="image-section">
+									<img src="{{Image(news.thumbnail).src}}" alt="" />
+								</div>
+								<div class="content">
+									{{news.meta('news_content')|excerpt}}
+								</div>
+								<div class="btn">
+									<a href="{{news.link}}" class="reverse-btn" aria-label="{{news.title}}">Learn More</a>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+
+				</div>
+			</section>
+
+		</article>
+	</div>
+{% endblock %}

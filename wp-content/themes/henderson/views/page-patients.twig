@@ -1,10 +1,83 @@
 {% import './components/image.twig' as Image %}
 {% import './components/button.twig' as Button %}
-{% extends "base.twig" %} 
+{% extends "base.twig" %}
 
 {% block content %}
-    <section class="{{field.slug}}-page" id="{{field.slug}}-page">
+	<section class="{{field.slug}}-page" id="{{field.slug}}-page">
+		<div class="page-description padding" id="page-description">
+			<div class="container">
+				<div class="content">
+					{{field.meta('page_description')}}
+				</div>
+			</div>
+		</div>
 
-    </section>
+		<div class="what-to-expect padding-lr" id="what-to-expect">
+			{% set what = field.meta('what_to_expect') %}
+			<div class="container">
+				<div class="section-details">
+					<h2 class="center">{{what.title}}</h2>
+					<div class="content center">
+						{{what.description}}
+					</div>
+				</div>
+				<div class="expectations">
+					{% for list in what.expect_list %}
+						{% set count = (count|default(0)) + 1 %}
+						<div class="list">
+							<h3 class="h5">{{count}}.
+								{{list.title}}</h3>
+							<div class="content">{{list.desc}}</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div class="preparations-for-visit padding" id="preparations-for-visit">
+			{% set prep = field.meta('preparations') %}
+			<div class="container">
+				<div class="section-details">
+					<h2 class="center">{{prep.title}}</h2>
+					<div class="content center">
+						{{prep.description}}
+					</div>
+				</div>
+				<div class="preparations">
+					{% for list in prep.preparations_list %}
+						<div class="list">
+							<div class="logo">
+								{{ function('file_get_contents', Image(list.logo).src) }}
+							</div>
+							<h3 class="h5">{{list.title}}</h3>
+							<div class="content">{{list.desc}}</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div class="forms-resources padding-lr" id="forms-resources">
+			{% set form = field.meta('forms_and_resources') %}
+			<div class="container">
+				<div class="wrapper padding">
+					<div class="section-details">
+						<h2 class="center">{{form.title}}</h2>
+						<div class="content center">
+							{{form.description}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <div class="ready-to-start padding-top" id="ready-to-start">
+            <div class="container">
+                {% set book = field.meta('ready_to_start') %}
+                {% include 'partials/book.twig' %}
+            </div>
+        </div>
+
+	</section>
 
 {% endblock %}

@@ -1,0 +1,70 @@
+<div class="massage-therpay-service-page">
+	<div class="types-of-massage padding-tb" id="types-of-massage">
+		{% set type = post.meta('types') %}
+		<div class="container">
+			<h2 class="center">{{type.title}}</h2>
+			<div class="types-list">
+				{% for list in type.types %}
+					<div class="list">
+						<div class="logo">
+							{{ function('file_get_contents', Image(list.logo).src) }}
+						</div>
+						<h3>{{list.title}}</h3>
+						<div class="content">{{list.desc}}</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+	<div class="techniques-approaches" id="techniques-approaches">
+		{% set tech = post.meta('techniques') %}
+		<div class="container">
+			<h2 class="center">{{tech.main_title}}</h2>
+			<div class="content">{{tech.techniques_description}}</div>
+			<div class="techniquess-list">
+				{% set list = tech.techniques %}
+				<div class="list">
+					<h3 class="center">{{list.title}}</h3>
+					<div class="types">
+						{% for item in list.types %}
+							<div class="item">
+								<h4 class="center">{{item.title}}</h4>
+								<div class="types">
+									{% for type in item.list %}
+										<div class="type">
+											<h5>{{type.title}}</h5>
+											<div class="content">{{type.description}}</div>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="what-to-expect padding-top" id="what-to-expect">
+		<div class="container">
+			{% set expect = post.meta('what_to_expect') %}
+			<div class="wrapper">
+				<div class="our-expect">
+					<div class="image-section">
+						<div class="grad"></div>
+						<img src="{{Image(expect.background_image).src}}" alt="{{Image(expect.background_image).alt}}" class="img-responsive">
+					</div>
+					<div class="expect-details">
+						<div class="wrapper">
+							<h2 class="center">{{expect.title}}</h2>
+							<div class="content h4">
+								{{expect.desc}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

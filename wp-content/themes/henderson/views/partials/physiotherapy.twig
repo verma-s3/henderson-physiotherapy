@@ -1,0 +1,59 @@
+<div class="physiotherapy-service-page">
+	<div class="exercise-programming padding-top" id="exercise-programming">
+		{% set page = post.meta('exercise_programming') %}
+		<div class="container">
+			<div class="details-section">
+				<h2 class="center">{{page.title}}</h2>
+				<p class="subtitle center h4">{{page.subtitle}}</p>
+				<div class="content center">{{page.desc}}</div>
+			</div>
+			<div class="programs" id="programs">
+				{% for prog in page.programs %}
+					<div class="program-content">
+						<div class="left-div">
+							<img src="{{Image(prog.image).src}}" alt="{{Image(prog.image).alt}}" class="img-responsive">
+						</div>
+						<div class="right-div">
+							<h3 class="h5">{{prog.title}}</h3>
+							<div class="content">{{prog.desc}}</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+	<div class="general-physio padding-top" id="general-physio">
+		{% set page = post.meta('general_physiotherapy') %}
+		<div class="container">
+			<div class="details-section">
+				<h2 class="center">{{page.title}}</h2>
+				<p class="subtitle center h4">{{page.subtitle}}</p>
+				<div class="content">{{page.desc}}</div>
+			</div>
+			<div class="process-details">
+				<h3 class="h4">{{page.process_title}}</h3>
+				<div class="list-details">
+					{% for list in page.process %}
+                    {% set count = (count|default(0)) + 1 %}
+						<div class="list">
+							<h4 class="h5">{{count}}. {{list.title}}</h4>
+							<p class="content">{{list.desc}}</p>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="techniques-details">
+				<h3 class="h4">{{page.techniques_title}}</h3>
+				<div class="list-details">
+					{% for list in page.techniques %}
+						<div class="list">
+							<h4 class="h5">{{list.title}}</h4>
+							<p class="content">{{list.desc}}</p>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

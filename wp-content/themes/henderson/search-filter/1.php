@@ -36,6 +36,8 @@ if ($query->have_posts()) {
 					<?php
 					if (has_post_thumbnail()) {
 						the_post_thumbnail('small');
+					}else{
+						echo '<img src="/wp-content/themes/henderson/static/images/placeholder.jpg" alt="placeholder-image" />';
 					}
 					?>
 

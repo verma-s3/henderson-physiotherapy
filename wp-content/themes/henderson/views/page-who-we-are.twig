@@ -97,8 +97,7 @@
 										{% set text = list.details %}
 										{% set text_length = text|length %}
 										<div class="content">
-											<div class="main-text">{{ text|slice(0, 195) }}</div>
-											<div class="more-text" style="display: none;">{{ text|slice(195) }}</div>
+											<div class="main-text">{{ text|slice(0, 195) }}</div><div class="more-text" style="display: none;">{{ text|slice(195) }}</div>
 										</div>
 										{% if text_length > 195 %}
 											<a href="javascript:void(0);" class="read-more">Read More</a>

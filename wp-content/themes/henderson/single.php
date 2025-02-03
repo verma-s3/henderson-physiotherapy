@@ -16,21 +16,15 @@
 // 	'post__not_in' => array(get_the_ID()), // or array($post->ID)
 //  'orderby'        => 'rand',
 // ];
-// $news_type = get_field('news_type'); // Get the ACF value of the current post
+$news_type = get_field('news_type'); // Get the ACF value of the current post
 
 $newsArgs = [
     'post_type'      => 'news',
     'post_status'    => 'publish',
     'posts_per_page' => -1,
-    // 'meta_query'     => [
-    //     [
-    //         'key'     => 'news_type',
-    //         'value'   => value,
-    //         'compare' => '='
-    //     ]
-    // ],
     'post__not_in'   => [get_the_ID()] // Exclude the current post
 ];
+
 
 $context = Timber::context();
 $context['news'] = Timber::get_posts($newsArgs);

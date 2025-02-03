@@ -1,0 +1,48 @@
+{% extends "base.twig" %}
+{% block content %}
+	<div class="content-wrapper">
+		<article class="post-type-{{ post.post_type}}" id="post-{{ post.ID}}">
+			<section class="service-content padding" id="service-content">
+				<div class="container">
+					<p class="breadcrumb">
+						<a href="/what-we-do/">What WE Do</a>
+						<span>
+							/
+						</span>
+						<span>{{post.title}}</span>
+					</p>
+				</div>
+
+				{% if post.title == 'Physiotherapy' %}
+					{% include 'partials/physiotherapy.twig' %}
+				{% endif %}
+
+				{% if post.title == 'Massage Therapy' %}
+					{% include 'partials/massage-therapy.twig' %}
+				{% endif %}
+
+				{% if post.title == 'Acupuncture' %}
+					{% include 'partials/acupuncture.twig' %}
+				{% endif %}
+
+				{% if post.title == 'Rehab' %}
+					{% include 'partials/rehab.twig' %}
+				{% endif %}
+
+			</section>
+			{% if post.meta('do_you_want_to_add_faq') == true %}
+				{% set page = post.meta('faq') %}
+				{% include 'partials/faq.twig' %}
+			{% endif %}
+
+			<section class="appointment-section" id="appointment-section">
+				<div class="ready-to-start" id="ready-to-start">
+					<div class="container">
+						{% set book = post.meta('booking_details') %}
+						{% include 'partials/book.twig' %}
+					</div>
+				</div>
+			</section>
+		</article>
+	</div>
+{% endblock %}

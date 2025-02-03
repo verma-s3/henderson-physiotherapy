@@ -11,12 +11,60 @@
 				</div>
 			</div>
 		</div>
-		{# {% elseif fn('is_singular','products') %} #}
+	{% elseif fn('is_singular','services') %}
+		<div class="hero padding-lr">
+			{% set serv = post.meta('service_detail') %}
+			<div class="not-home container">
+				<img class="img-responsive" src="{{Image(serv.feature_image).src}}" alt="{{Image(serv.feature_image).alt}}"/>
+				<div class="content">
+					<h1>{{serv.name}}</h1>
+					<p class="subtitle">{{serv.desc}}</p>
+				</div>
+			</div>
+		</div>
 	{% endif %}
 {% endif %}
 {# if the page is home page #}
 {% if fn('is_page',"8") %}
-	<div class="hero">
-		<img class="img-responsive" src="{{Image(field.meta('hero_banner')).src}}" alt="{{Image(field.meta('hero_banner')).alt}}"/>
+	<div class="hero padding-lr">
+		<div class="home container">
+			{% set hero = field.meta('hero_slider') %}
+			<div class="content-section desktop-section">
+				<div class="home-slider-nav">
+					{% for item in hero %}
+						<div class="slider-details">
+							<h1>{{item.title}}</h1>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="btns">
+					<a href="{{field.meta('button_1').link}}" aria-label="{{field.meta('button_1').name}}" target="_blank" rel="noopener noreferrer" class="reverse-btn">{{field.meta('button_1').name}}</a>
+					<a href="{{field.meta('button_2').link}}" aria-label="{{field.meta('button_2').name}}" target="_blank" rel="noopener noreferrer" class="reverse-btn">{{field.meta('button_2').name}}</a>
+				</div>
+			</div>
+
+			<div class="home-slider">
+				{% for item in hero %}
+					<div class="image-section">
+						<img class="img-responsive" src="{{Image(item.image).src}}" alt="{{Image(item.image).alt}}"/>
+					</div>
+				{% endfor %}
+			</div>
+
+			<div class="content-section mobile-section">
+				<div class="home-slider-nav">
+					{% for item in hero %}
+						<div class="slider-details">
+							<h1>{{item.title}}</h1>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="btns">
+					<a href="{{field.meta('button_1').link}}" aria-label="{{field.meta('button_1').name}}" target="_blank" rel="noopener noreferrer" class="reverse-btn">{{field.meta('button_1').name}}</a>
+					<a href="{{field.meta('button_2').link}}" aria-label="{{field.meta('button_2').name}}" target="_blank" rel="noopener noreferrer" class="reverse-btn">{{field.meta('button_2').name}}</a>
+				</div>
+			</div>
+
+		</div>
 	</div>
 {% endif %}

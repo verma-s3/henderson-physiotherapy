@@ -1,0 +1,27 @@
+<section class="faq-section" id="faq-section">
+	<div class="container" data-aos="fade-in">
+		<h2 class="title center">Frequently Asked Questions</h2>
+		<div class="faq-list">
+			{% if page is not empty %}
+				{% for faq in page %}
+					{% set count = loop.length %}
+					<div class="faq-button">
+						<h3>
+							<span>{{faq.question}}</span>
+							<span class="more">{{source (directory ~ '/static/images/home/icons/plus.svg') }}</span>
+							<span class="less">{{source (directory ~ '/static/images/home/icons/minus.svg') }}</span>
+						</h3>
+						<div class="faq-answer">
+							{{faq.answer}}
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+</section>
+
+
+
+
+

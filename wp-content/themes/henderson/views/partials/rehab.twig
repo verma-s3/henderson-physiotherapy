@@ -1,0 +1,81 @@
+<div class="rehab-service-page">
+	<div class="return-to-work padding-tb" id="return-to-work">
+		{% set page = post.meta('return_to_work') %}
+		<div class="container">
+			<h2 class="center">{{page.title}}</h2>
+			<p class="subtitle center h4">{{page.subtitle}}</p>
+			<div class="content center">{{page.description}}</div>
+			{% set ben = page.benefits %}
+			<div class="types">
+				<h3 class="center h4">{{ben.title}}</h3>
+				<div class="list-type">
+					{% for type in ben.goals %}
+						<div class="type center">
+							<h4 class="center h5">{{type.goal}}</h4>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<p class="tagline center h5">{{ben.tagline}}</p>
+		</div>
+	</div>
+
+	<div class="rehabilitation" id="rehabilitation">
+		{% set page = post.meta('rehabilitation') %}
+		<div class="container padding">
+			<div class="details-section">
+				<h2 class="center">{{page.title}}</h2>
+				<p class="subtitle center h4">{{page.subtitle}}</p>
+				<div class="content">{{page.description}}</div>
+			</div>
+			{% set help = page.rehab_help %}
+			<div class="types">
+				<h3 class="center h4">{{help.title}}</h3>
+				<div class="list-type">
+					{% for list in help.list %}
+						<div class="list">
+							<div class="logo">{{ function('file_get_contents', Image(list.logo).src) }}</div>
+							<h4 class="h5">{{list.title}}</h4>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="neuro-rehab" id="neuro-rehab">
+		{% set page = post.meta('neuro_rehab') %}
+		<div class="container padding-top">
+			<h2 class="center">{{page.title}}</h2>
+			<p class="subtitle center h4">{{page.subtitle}}</p>
+			<div class="content center">{{page.description}}</div>
+			{% set cond = page.conditions %}
+			{% set help = page.help %}
+			<div class="types">
+				<h3 class="center h4">{{cond.title}}</h3>
+				<div class="list-type">
+					{% for list in cond.list %}
+						<div class="list center">
+							<div class="logo">{{ function('file_get_contents', Image(list.logo).src) }}</div>
+							<h4 class="h5">{{list.title}}</h4>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="conditions-list">
+				<h3 class="center h4">{{help.title}}</h3>
+				<div class="content center">{{help.desc}}</div>
+				<div class="list-type">
+					{% for list in help.list %}
+						<div class="list">
+							<h4 class="h5 center">{{list.title}}</h4>
+						</div>
+					{% endfor %}
+				</div>
+				<p class="tagline center h5">{{help.tagline}}</p>
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,10 +1,323 @@
 {% import './components/image.twig' as Image %}
 {% import './components/button.twig' as Button %}
-{% extends "base.twig" %} 
+{% extends "base.twig" %}
 
 {% block content %}
-    <section class="{{field.slug}}-page" id="{{field.slug}}-page">
+	<section class="{{field.slug}}-page" id="{{field.slug}}-page">
+		<div class="page-description padding" id="page-description">
+			<div class="page-details">
+				{% set page = field.meta('page_desc') %}
+				<div class="container">
+					<h2 class="center">{{page.title}}</h2>
+					<div class="content">{{page.desc}}</div>
+				</div>
+			</div>
+			<div class="why-henderson container">
+				{% set why = field.meta('why_henderson') %}
+				<div class="wrapper padding-tb">
+					<h2 class="h3">{{why.title}}</h2>
+					<div class="section-details">
+						{% for feat in why.features %}
+							<div class="features">
+								<div class="logo">
+									{{ function('file_get_contents', Image(feat.logo).src) }}
+								</div>
+								<h3 class="h5">{{feat.heading}}</h3>
+								{% set text = feat.desc %}
+								{% set text_length = text|length %}
+								<div class="content">
+									<div class="main-text">{{ text|slice(0, 100) }}</div>
+									<div class="more-text" style="display: none;">{{ text|slice(100) }}</div>
+								</div>
+								{% if text_length > 100 %}
+									<a href="javascript:void(0);" class="read-more">Read More</a>
+								{% endif %}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
 
-    </section>
+		<div class="services" id="services">
+			{% set page = field.meta('services') %}
+			<div class="container">
+				<h2 class="center">{{page.title}}</h2>
+				<div class="service-slider-nav nav-desktop">
+					{% for item in page.service_list %}
+						<div class="name-section">
+							<h3 class="">{{item.service_name}}</h3>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="service-slider-main">
+					{% for item in page.service_list %}
+						<div class="image-section">
+							<img src="{{Image(item.image).src}}" alt="{{Image(item.image).alt}}" class="img-responsive">
+						</div>
+					{% endfor %}
+				</div>
+				<div class="service-slider-nav nav-mobile">
+					{% for item in page.service_list %}
+						<div class="name-section">
+							<h3 class="">{{item.service_name}}</h3>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="btn">
+					<a href="" aria-label="book now" target="_blank" rel="noopener noreferrer" class="custom-btn">{{page.button.name}}</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="personalized-assessments padding-lr padding-top" id="personalized-assessments">
+			{% set page = field.meta('assessment_details') %}
+			<div class="container">
+				<div class="wrapper">
+					<div class="our-visit">
+						<div class="image-section">
+							<div class="grad"></div>
+							<img src="{{Image(page.bg_image).src}}" alt="{{Image(page.bg_image).alt}}" class="img-responsive">
+						</div>
+						<div class="visit-details">
+							<div class="wrapper">
+								<h2 class="center">{{page.title}}</h2>
+								<div class="content center h4">
+									{{page.subtitle}}
+								</div>
+								<div class="feature-img-section">
+									<img src="{{Image(page.feature_image_dk).src}}" alt="{{Image(page.feature_image_dk).alt}}" class="img-responsive desktop-view">
+									<img src="{{Image(page.feature_image_mb).src}}" alt="{{Image(page.feature_image_mb).alt}}" class="img-responsive mobile-view">
+								</div>
+							</div>
+						</div>
+					</div>
+					{# Assessments #}
+					<div class="assessments" id="assessments">
+						{% set asses = page.assessment_details %}
+						<h2 class="center">{{asses.title}}</h2>
+						<div class="types-details">
+							<h3 class="h4 center">{{asses.types_title}}</h3>
+							<div class="list-details">
+								{% for list in asses.types %}
+									<div class="list">
+										<div class="logo">
+											{{ function('file_get_contents', Image(list.logo).src) }}
+										</div>
+										<h4 class="h5">{{list.title}}</h4>
+										<p class="content">{{list.desc}}</p>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="expect-details">
+							<h3 class="h4 center">{{asses.what_to_expect_title}}</h3>
+							<div class="list-details">
+								{% for list in asses.list_what_to_expect %}
+									{% set count = (count|default(0)) + 1 %}
+									<div class="list">
+										<h4 class="h5">{{count}}.
+											{{list.title}}</h4>
+										<p class="content">{{list.desc}}</p>
+									</div>
+								{% endfor %}
+							</div>
+							<div class="btn">
+								<a href="{{asses.button.link}}" class="reverse-btn">{{asses.button.name}}</a>
+							</div>
+						</div>
+					</div>
+					{# Follow-up Appointment #}
+					<div class="follow-up-appointments" id="follow-up-appointments">
+						{% set appt = page.appointment %}
+						<div class="container follow-details">
+							<h2 class="center">{{appt.main_title}}</h2>
+							<p class="subtitle center h4">{{appt.subtitle}}</p>
+							<div class="list-details">
+								{% for list in appt.follow_up_details %}
+									{% set count = (count|default(0)) + 1 %}
+									<div class="list">
+										<h4 class="h5">{{count}}.
+											{{list.title}}</h4>
+										<p class="content">{{list.desc}}</p>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="have-a-question padding-tb">
+			{% set page = field.meta('question') %}
+			<div class="container">
+				<div class="booking-details center padding">
+					<h2>{{page.title}}</h2>
+					<div class="btns">
+						<a href="{{page.group.link}}" class="custom-btn">{{page.group.name}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="conditions-we-treat padding-lr" id="conditions-we-treat">
+			{% set page = field.meta('conditions_details') %}
+			<div class="container">
+				<div class="wrapper">
+					<div class="our-visit">
+						<div class="image-section">
+							<div class="grad"></div>
+							<img src="{{Image(page.bg_image).src}}" alt="{{Image(page.bg_image).alt}}" class="img-responsive">
+						</div>
+						<div class="visit-details">
+							<div class="wrapper">
+								<h2 class="center">{{page.title}}</h2>
+								<p class="subtitle center h4">
+									{{page.subtitle}}
+								</p>
+								<div class="content center">
+									{{page.desc}}
+								</div>
+							</div>
+						</div>
+					</div>
+					{# conditions #}
+					<div class="conditions-details" id="conditions-details">
+						{% set con = page.condition_details %}
+						<div class="wrapper">
+							<h2 class="center h4">{{con.main_title}}</h2>
+							<div class="list-details">
+								{% for list in con.list %}
+									<div class="list-items">
+										<h3 class="h5">{{list.title}}</h3>
+										{% set text = list.desc %}
+										{% set text_length = text|length %}
+										<div class="content">
+											<div class="main-text">{{ text|slice(0, 100) }}</div>
+											<div class="more-text" style="display: none;">{{ text|slice(100) }}</div>
+										</div>
+										{% if text_length > 100 %}
+											<a href="javascript:void(0);" class="read-more">Read More</a>
+										{% endif %}
+									</div>
+								{% endfor %}
+							</div>
+							<div class="btn">
+								<a href="" class="reverse-btn">Book Your Appointment</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{# Insights and Tips #}
+		<div class="latest-news padding" id="latest-news">
+			{% set page = field.meta('insights_and_tips') %}
+			<div class="container">
+				<div class="details-section">
+					<h2 class="center">{{page.title}}</h2>
+					<div class="content center">{{page.desc}}</div>
+				</div>
+				<div class="news-slider-section">
+					<div class="insights-section">
+						<div class="news-slider-arrows desktop-view">
+							<div class="prevArrow">
+								{{ source(directory ~ '/static/images/left-arrow.svg') }}
+							</div>
+							<div class="nextArrow transform">
+								{{ source(directory ~ '/static/images/left-arrow.svg') }}
+							</div>
+						</div>
+						<div class="slider-section">
+							<div class="news-slider">
+								{% for news in news %}
+									<div class="news-result-div">
+										<h3 class="h5">{{news.title}}</h3>
+										<div class="image-section">
+											{% if news.thumbnail.src is not empty %}
+												<img src="{{Image(news.thumbnail).src}}" alt=""/>
+											{% else %}
+												<img src="{{ site.theme.link}}/static/images/placeholder.jpg" alt="placeholder-image"/>
+											{% endif %}
+										</div>
+										<div class="content">
+											{{news.meta('news_content')|excerpt}}
+										</div>
+										<div class="btn">
+											<a href="{{news.link}}" class="reverse-btn" aria-label="{{news.title}}">Learn More</a>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+
+					<div class="news-slider-arrows mobile-view-arrows">
+						<div class="prevArrow">
+							{{ source(directory ~ '/static/images/left-arrow-mb.svg') }}
+						</div>
+						<div class="nextArrow transform">
+							{{ source(directory ~ '/static/images/left-arrow-mb.svg') }}
+						</div>
+					</div>
+
+				</div>
+				<div class="btn">
+					<a href="/news-insights/" class="custom-btn" aria-label="News and Insights Page">View All</a>
+				</div>
+			</div>
+		</div>
+
+		{# <div class="social-media" id="social-media">
+			<div class="container">
+				<h2 class="center">Social Media</h2>
+			</div>
+		</div> #}
+
+		{% if field.meta('do_you_want_to_add_faq') == true %}
+			{% set page = field.meta('faq') %}
+			{% include 'partials/faq.twig' %}
+		{% endif %}
+
+		<div class="our-companies {% if field.meta('do_you_want_to_add_faq') == true %}padding-top{% endif %}" id="our-companies">
+			{% set page = field.meta('our_companies') %}
+			<div class="container">
+				<div class="content-details padding">
+					<h2 class="">{{page.title}}</h2>
+					<div class="content">{{page.description}}</div>
+					<div class="company-details">
+						{% for list in page.companies_details %}
+							<div class="list">
+								<h3 class="h5">{{list.company_name}}</h3>
+								<p class="address">{{list.address}}</p>
+								<p class="phone-number">
+									<span class="light-blue">Phone:
+									</span>
+									<a href="tel:{{ list.phone_number }}" aria-label="Phone us at {{list.phone_number}}">
+										{% set phoneNumber = list.phone_number %}
+										{% include 'partials/phone-number.twig' %}
+									</a>
+								</p>
+								<p class="phone-number">
+									<span class="light-blue">Fax:
+									</span>
+									{% set phoneNumber = list.fax_number %}
+									{% include 'partials/phone-number.twig' %}
+								</p>
+								<a href="{{list.website.link}}" aria-label="{{list.website.name}}">{{list.website.name}}</a>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="image-section mobile-view">
+						<img src="{{site.theme.link}}/static/images/map-mobile.jpg" alt="Map">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
 
 {% endblock %}

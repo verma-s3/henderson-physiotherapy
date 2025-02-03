@@ -131,7 +131,7 @@ class StarterSite extends Timber\Site
 			'public' => true,
 			'has_archive' => false,
 			'menu_icon'   => 'dashicons-clipboard',
-			'supports'    => array('title', 'thumbnail'),
+			'supports'    => array('title'),
 			)
 		);
 

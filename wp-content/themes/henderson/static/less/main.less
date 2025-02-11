@@ -1873,6 +1873,11 @@ header {
                 @media @min1640 {
                     grid-template-columns: 1fr 700px;
                 }
+                .content-details{
+                    @media @min992{
+                        text-align: right;
+                    }
+                }
             }
 
             .image-section {
@@ -2827,7 +2832,10 @@ header {
 
         .search-filter-base {
             .search-filter-input-group {
-                .display-flex(flex, var(--space-24), row, center);
+                .display-flex(flex, var(--space-sm), row, center);
+                @media @min600{
+                    gap: var(--space-24);
+                }
                 justify-content: space-between;
                 .width(590px, auto);
 
@@ -2839,6 +2847,7 @@ header {
 
                         .search-filter-input-radio__label {
                             .h4();
+                            padding-left: 0px !important;
                         }
                     }
                 }
@@ -3068,6 +3077,7 @@ header {
             }
 
             .contact-form-details {
+                width: 100%;
                 @media @min992 {
                     .width(760px);
                 }
@@ -3075,7 +3085,7 @@ header {
                 h2 {
                     margin-bottom: var(--space-40);
                     text-align: center;
-                    color: var(--black);
+                    color: var(--pri-100);
 
                     @media @min992 {
                         margin-bottom: var(--space-lg);

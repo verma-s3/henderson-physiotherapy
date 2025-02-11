@@ -156,6 +156,20 @@ jQuery(document).ready(function ($) {
     vertical: true
   });
 
+  // slick carousel go to slide on hover
+  $('.service-slider-nav .slick-slide').hover(function () {
+    var index = $(this).data('index');
+    $('.service-slider-main .slick-slide').slick('slickGoTo', index);
+  });
+
+  // On click, navigate to a new page
+  $('.service-slider-nav .slick-slide').click(function () {
+    var url = $(this).data('url');
+    if (url) {
+        window.location.href = url;
+    }
+});
+
   //hero-slider
   //service-slider-homepage
   $('.home-slider').slick({

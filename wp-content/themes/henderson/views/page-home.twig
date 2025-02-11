@@ -45,7 +45,7 @@
 				<h2 class="center">{{page.title}}</h2>
 				<div class="service-slider-nav nav-desktop">
 					{% for item in page.service_list %}
-						<div class="name-section">
+						<div class="name-section" data-index="{{ forloop.index0 }}" data-url="{{ item.link }}">
 							<h3 class="">{{item.service_name}}</h3>
 						</div>
 					{% endfor %}
@@ -59,13 +59,13 @@
 				</div>
 				<div class="service-slider-nav nav-mobile">
 					{% for item in page.service_list %}
-						<div class="name-section">
+						<div class="name-section" data-index="{{ forloop.index0 }}" data-url="{{ item.link }}">
 							<h3 class="">{{item.service_name}}</h3>
 						</div>
 					{% endfor %}
 				</div>
 				<div class="btn">
-					<a href="" aria-label="book now" target="_blank" rel="noopener noreferrer" class="custom-btn">{{page.button.name}}</a>
+					<a href="{{page.button.link}}" aria-label="book now" target="_blank" rel="noopener noreferrer" class="custom-btn">{{page.button.name}}</a>
 				</div>
 			</div>
 		</div>
@@ -123,7 +123,7 @@
 								{% endfor %}
 							</div>
 							<div class="btn">
-								<a href="{{asses.button.link}}" class="reverse-btn">{{asses.button.name}}</a>
+								<a href="{{asses.button.link}}" aria-label="book now" target="_blank" rel="noopener noreferrer" class="reverse-btn">{{asses.button.name}}</a>
 							</div>
 						</div>
 					</div>
@@ -205,7 +205,8 @@
 								{% endfor %}
 							</div>
 							<div class="btn">
-								<a href="" class="reverse-btn">Book Your Appointment</a>
+							{% set asses = field.meta('assessment_details').assessment_details %}
+								<a href="{{asses.button.link}}" aria-label="book now" target="_blank" rel="noopener noreferrer" class="reverse-btn">{{asses.button.name}}</a>
 							</div>
 						</div>
 					</div>
@@ -244,7 +245,7 @@
 											{% endif %}
 										</div>
 										<div class="content">
-											{{news.meta('news_content')|excerpt}}
+											{{news.meta('news_content')|excerpt()}}
 										</div>
 										<div class="btn">
 											<a href="{{news.link}}" class="reverse-btn" aria-label="{{news.title}}">Learn More</a>

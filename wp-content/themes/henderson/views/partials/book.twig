@@ -1,8 +1,8 @@
 <div class="booking-details center padding">
-    <h2>{{book.title}}</h2>
-    <div class="content">{{book.description}}</div>
-    <div class="btns">
-        <a href="{{book.button_1.link}}" class="custom-btn">{{book.button_1.name}}</a>
-        <a href="{{book.button_2.link}}" class="custom-btn">{{book.button_2.name}}</a>
-    </div>
+	<h2>{{book.title}}</h2>
+	<div class="content">{{book.description}}</div>
+	<div class="btns">
+		<a href="{{book.button_1.link}}" target="_blank" rel="noopener noreferrer" aria-label="book-now" class="custom-btn">{{book.button_1.name}}</a>
+		<a href="tel:{{ book.button_2.link }}" aria-label="Phone us at {{book.button_2.link}}" class="custom-btn">{{book.button_2.name}}</a>
+	</div>
 </div>

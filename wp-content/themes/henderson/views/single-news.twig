@@ -46,7 +46,7 @@
 												{% endif %}
 											</div>
 											<div class="content">
-												{{news.meta('news_content')|excerpt}}
+												{{news.meta('news_content')|excerpt(15)}}
 											</div>
 											<div class="btn">
 												<a href="{{news.link}}" class="reverse-btn" aria-label="{{news.title}}">Learn More</a>

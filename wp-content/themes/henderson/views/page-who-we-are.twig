@@ -4,7 +4,7 @@
 
 {% block content %}
 	<section class="{{field.slug}}-page" id="{{field.slug}}-page">
-		<div class="container">
+		<div class="container2">
 			<div class="page-description padding">
 				{% set page = field.meta('page_description') %}
 				<div class="wrapper">
@@ -41,7 +41,7 @@
 							</div>
 							<div class="description h5">{{story.sponsor_description}}</div>
 							<div class="btn">
-								<a href="{{story.button.link}}" aria-label="{{story.button.name}}" class="reverse-btn">{{story.button.name}}</a>
+								<a href="{{story.button.link}}" aria-label="{{story.button.name}}" target="_blank" rel="noopener noreferrer" class="reverse-btn">{{story.button.name}}</a>
 							</div>
 						</div>
 					</div>

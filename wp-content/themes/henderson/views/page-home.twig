@@ -22,14 +22,15 @@
 								<div class="logo">
 									{{ function('file_get_contents', Image(feat.logo).src) }}
 								</div>
-								<h3 class="h5">{{feat.heading}}</h3>
+								<h3 class="h5">{{feat.heading}}
+								</h3>
 								{% set text = feat.desc %}
 								{% set text_length = text|length %}
 								<div class="content">
-									<div class="main-text">{{ text|slice(0, 100) }}</div>
-									<div class="more-text" style="display: none;">{{ text|slice(100) }}</div>
+									<div class="main-text">{{ text|slice(0, 70)}}...</div>
+									<div class="more-text" style="display: none;">{{ text }}</div>
 								</div>
-								{% if text_length > 100 %}
+								{% if text_length > 70 %}
 									<a href="javascript:void(0);" class="read-more">Read More</a>
 								{% endif %}
 							</div>
@@ -156,7 +157,7 @@
 				<div class="booking-details center padding">
 					<h2>{{page.title}}</h2>
 					<div class="btns">
-						<a href="{{page.group.link}}" class="custom-btn">{{page.group.name}}</a>
+						<a href="tel:{{page.group.link}}" class="custom-btn">{{page.group.name}}</a>
 					</div>
 				</div>
 			</div>
@@ -195,17 +196,22 @@
 										{% set text = list.desc %}
 										{% set text_length = text|length %}
 										<div class="content">
-											<div class="main-text">{{ text|slice(0, 100) }}</div>
-											<div class="more-text" style="display: none;">{{ text|slice(100) }}</div>
+											{% if text_length > 65 %}
+												<div class="main-text">{{ text|slice(0, 65)}}...</div>
+											{% else %}
+												<div class="main-text">{{ text}}</div>
+											{% endif %}
+											<div class="more-text" style="display: none;">{{ text }}</div>
 										</div>
-										{% if text_length > 100 %}
+										{% if text_length > 65 %}
 											<a href="javascript:void(0);" class="read-more">Read More</a>
 										{% endif %}
 									</div>
 								{% endfor %}
 							</div>
+							<a href="javascript:void(0);" class="view-all-btn">View All</a>
 							<div class="btn">
-							{% set asses = field.meta('assessment_details').assessment_details %}
+								{% set asses = field.meta('assessment_details').assessment_details %}
 								<a href="{{asses.button.link}}" aria-label="book now" target="_blank" rel="noopener noreferrer" class="reverse-btn">{{asses.button.name}}</a>
 							</div>
 						</div>
@@ -245,7 +251,7 @@
 											{% endif %}
 										</div>
 										<div class="content">
-											{{news.meta('news_content')|excerpt()}}
+											{{news.meta('news_content')|excerpt(15)}}
 										</div>
 										<div class="btn">
 											<a href="{{news.link}}" class="reverse-btn" aria-label="{{news.title}}">Learn More</a>
@@ -273,10 +279,10 @@
 		</div>
 
 		{# <div class="social-media" id="social-media">
-			<div class="container">
-				<h2 class="center">Social Media</h2>
-			</div>
-		</div> #}
+									<div class="container">
+										<h2 class="center">Social Media</h2>
+									</div>
+								</div> #}
 
 		{% if field.meta('do_you_want_to_add_faq') == true %}
 			{% set page = field.meta('faq') %}

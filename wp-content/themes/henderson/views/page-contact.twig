@@ -29,8 +29,8 @@
                         <div class="btns">
                         {% set btn1 = book.button_1 %}
                         {% set btn2 = book.button_2 %}
-                            <a href="{{btn1.link}}" class="custom-btn">{{btn1.name}}</a>
-                            <a href="{{btn2.link}}" class="custom-btn">{{btn2.name}}</a>
+                            <a href="{{btn1.link}}" target="_blank" rel="noopener noreferrer" aria-label="Book now" class="custom-btn">{{btn1.name}}</a>
+                            <a href="tel:{{btn2.link}}" aria-label="phone us" class="custom-btn">{{btn2.name}}</a>
                         </div>
                     </div>
                     <div class="hours">

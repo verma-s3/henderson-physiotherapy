@@ -4,24 +4,48 @@ jQuery(document).ready(function ($) {
     $('header').toggleClass('header-color');
     $('#overlay').toggleClass('open');
     $('html').toggleClass('hidden');
+     if ($('header').hasClass('fixed-header')) {
+      $('header').toggleClass('overlay-header');
+    }
   });
 
   // Closes overlay menu after clicking on the menu link
-  $('#site-navigation3 ul li:not(.menu-item-29) a').on("click", function (e) {
+  $('#site-navigation3 ul li a').on("click", function (e) {
     $('#toggle').click();
   });
 
-  $('.overlay-menu li.menu-item-29').click(function () {
-    $('li.menu-item-29 ul').slideToggle("ease-in-out");
-    $('li.menu-item-29  a img').toggleClass("show");
+  // $('.overlay-menu li.menu-item-29').click(function () {
+  //   $('li.menu-item-29 ul').slideToggle("ease-in-out");
+  //   $('li.menu-item-29  a img').toggleClass("show");
+  // });
+
+  fixedHeaderOnScroll();
+  //*** Fixed header ***
+  function fixedHeaderOnScroll() {
+    var heroHeight = window.innerHeight;
+    // console.log(heroHeight);
+    if ($(this).scrollTop() >= heroHeight) {// If page is scrolled more than 50px
+      $('header').addClass('fixed-header');    // Fade in the arrow
+    } else {
+      $('header').removeClass('fixed-header');   // Else fade out the arrow
+    }
+  }
+  $(window).scroll(function () {
+    fixedHeaderOnScroll();
   });
 
-  // AOS.init({
-  //     duration: 1200,
-  //     easing:'ease-in-quad',
-  //     disable: 'mobile',
-  //     once: true
-  // });
+  $(window).resize(function () {
+    fixedHeaderOnScroll();
+    conditionsTreat();
+  });
+
+
+  AOS.init({
+    duration: 1200,
+    easing: 'ease-in-quad',
+    disable: 'mobile',
+    once: true
+  });
 
   function readMore($readmore) {
     var $this = $readmore;
@@ -36,16 +60,32 @@ jQuery(document).ready(function ($) {
     }
   }
 
+  function readText($readmore) {
+    var $this = $readmore;
+    var $moreText = $this.prev().find(".more-text");
+    var $mainText = $this.prev().find(".main-text");
+
+    if ($moreText.is(":visible")) {
+      $moreText.hide();
+      $mainText.show();
+      $this.html("Read More");
+    } else {
+      $moreText.show();
+      $mainText.hide();
+      $this.html("Read Less");
+    }
+  }
+
   $(".team-content .read-more").click(function () {
     readMore($(this));
   });
 
   $(".features .read-more").click(function () {
-    readMore($(this));
+    readText($(this));
   });
 
   $(".conditions-details .list-items .read-more").click(function () {
-    readMore($(this));
+    readText($(this));
   });
 
   // frequesnt Questions and Answers
@@ -75,7 +115,7 @@ jQuery(document).ready(function ($) {
   //Slick SLider
   $('.gallery-slider').slick({
     dots: false,
-    infinite: false,
+    infinite: true,
     arrows: false,
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -166,9 +206,9 @@ jQuery(document).ready(function ($) {
   $('.service-slider-nav .slick-slide').click(function () {
     var url = $(this).data('url');
     if (url) {
-        window.location.href = url;
+      window.location.href = url;
     }
-});
+  });
 
   //hero-slider
   //service-slider-homepage
@@ -196,6 +236,34 @@ jQuery(document).ready(function ($) {
     autoplaySpeed: 3000,
     cssEase: 'linear',
   });
+
+  //conditions
+  var baseUrl = window.location.origin + '/';
+  var screenWidth = $(window).width();
+  var divCount = $('.conditions-details .list-details .list-items').length;
+
+  function conditionsTreat() {
+    if ((window.location.href == baseUrl) && (screenWidth <= 768)) {
+      console.log(true)
+      if (divCount > 6) {
+        $('.conditions-details .list-details .list-items').slice(6).hide();
+      }
+      $('.view-all-btn').click(function () {
+        $('.conditions-details .list-details .list-items').slice(6).slideToggle('slow');
+        if ($('.view-all-btn').text() == "View All") {
+          $('.view-all-btn').text("View Less");
+        } else {
+          $('.view-all-btn').text("View All");
+        }
+
+      });
+    }
+  }
+
+  conditionsTreat();
+
+
+
 
 
 });

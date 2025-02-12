@@ -6,8 +6,8 @@
 			<div class="not-home container">
 				<img class="img-responsive" src="{{Image(field.meta('banner_image')).src}}" alt="{{Image(field.meta('banner_image')).alt}}"/>
 				<div class="content">
-					<h1>{{field.meta('title')}}</h1>
-					<p class="subtitle">{{field.meta('subtitle')}}</p>
+					<h1 data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="400">{{field.meta('title')}}</h1>
+					<p class="subtitle" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="500">{{field.meta('subtitle')}}</p>
 				</div>
 			</div>
 		</div>
@@ -17,8 +17,8 @@
 			<div class="not-home container">
 				<img class="img-responsive" src="{{Image(serv.feature_image).src}}" alt="{{Image(serv.feature_image).alt}}"/>
 				<div class="content">
-					<h1>{{serv.name}}</h1>
-					<p class="subtitle">{{serv.desc}}</p>
+					<h1 data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="400">{{serv.name}}</h1>
+					<p class="subtitle" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="500">{{serv.desc}}</p>
 				</div>
 			</div>
 		</div>
@@ -29,7 +29,7 @@
 	<div class="hero padding-lr">
 		<div class="home container">
 			{% set hero = field.meta('hero_slider') %}
-			<div class="content-section desktop-section">
+			<div class="content-section desktop-section" data-aos="fadeIn" data-aos-easing="ease-in-back" data-aos-delay="500">
 				<div class="home-slider-nav">
 					{% for item in hero %}
 						<div class="slider-details">
@@ -37,9 +37,9 @@
 						</div>
 					{% endfor %}
 				</div>
-				<div class="btns">
+				<div class="btns" >
 					<a href="{{field.meta('button_1').link}}" aria-label="{{field.meta('button_1').name}}" class="reverse-btn">{{field.meta('button_1').name}}</a>
-					<a href="tel:{{field.meta('button_2').link}}" aria-label="{{field.meta('button_2').name}}" class="reverse-btn">{{field.meta('button_2').name}}</a>
+					<a href="tel:{{field.meta('button_2').link}}"  aria-label="{{field.meta('button_2').name}}" class="reverse-btn">{{field.meta('button_2').name}}</a>
 				</div>
 			</div>
 

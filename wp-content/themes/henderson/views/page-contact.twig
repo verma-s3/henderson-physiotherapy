@@ -6,8 +6,8 @@
     <section class="{{field.slug}}-page padding" id="{{field.slug}}-page">
         <div class="container">
 			<div class="wrapper">
-				<div class="full-contact-details" data-aos="fade-in">					
-					<div class="address-details">
+				<div class="full-contact-details">					
+					<div class="address-details" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 						<p class="address">{{ options.address }}</p>
                         <div class="phone-number"> 
                             <span>Phone:</span>
@@ -22,7 +22,7 @@
 							{% include 'partials/phone-number.twig' %}</span>
 						</div>
 					</div>
-                    <div class="book-an-appt">
+                    <div class="book-an-appt" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
                     {% set book = field.meta('book_an_appointment') %}
                         <h2 class="h4">{{book.title}}</h2>
                         <p class="subtitle">{{book.description}}</p>
@@ -33,13 +33,13 @@
                             <a href="tel:{{btn2.link}}" aria-label="phone us" class="custom-btn">{{btn2.name}}</a>
                         </div>
                     </div>
-                    <div class="hours">
+                    <div class="hours" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
                         <h2 class="h4">Hours</h2>
                         <div class="hours-details">
                             {{field.meta('hours')}}
                         </div>
                     </div>
-                    <div class="connect-with-us">
+                    <div class="connect-with-us" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 						<h2 class="h4">Connect with us</h2>
 						{% include 'partials/social-media.twig' %}
 					</div>

@@ -2,7 +2,7 @@
 	<div class="exercise-programming padding-top" id="exercise-programming">
 		{% set page = post.meta('exercise_programming') %}
 		<div class="container">
-			<div class="details-section">
+			<div class="details-section" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				<h2 class="center">{{page.title}}</h2>
 				<p class="subtitle center h4">{{page.subtitle}}</p>
 				<div class="content center">{{page.desc}}</div>
@@ -13,7 +13,7 @@
 						<div class="left-div">
 							<img src="{{Image(prog.image).src}}" alt="{{Image(prog.image).alt}}" class="img-responsive">
 						</div>
-						<div class="right-div">
+						<div class="right-div" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 							<h3 class="h5">{{prog.title}}</h3>
 							<div class="content">{{prog.desc}}</div>
 						</div>
@@ -26,12 +26,12 @@
 	<div class="general-physio padding-top" id="general-physio">
 		{% set page = post.meta('general_physiotherapy') %}
 		<div class="container">
-			<div class="details-section">
+			<div class="details-section" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				<h2 class="center">{{page.title}}</h2>
 				<p class="subtitle center h4">{{page.subtitle}}</p>
 				<div class="content">{{page.desc}}</div>
 			</div>
-			<div class="process-details">
+			<div class="process-details" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				<h3 class="h4">{{page.process_title}}</h3>
 				<div class="list-details">
 					{% for list in page.process %}
@@ -43,7 +43,7 @@
 					{% endfor %}
 				</div>
 			</div>
-			<div class="techniques-details">
+			<div class="techniques-details" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				<h3 class="h4">{{page.techniques_title}}</h3>
 				<div class="list-details">
 					{% for list in page.techniques %}

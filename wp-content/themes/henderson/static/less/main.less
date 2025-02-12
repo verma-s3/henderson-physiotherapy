@@ -102,34 +102,6 @@
     clear: both;
 }
 
-/**********************************
-* GLOBAL
-***********************************/
-// .get-in-touch {
-//     margin-bottom: 159px;
-//     @media @min1024 {
-//         margin-bottom: 202px;
-//     }
-//     span a {
-//         .custom-btn();
-//         margin: 0 auto;
-//         margin-top: 22px;
-//     }
-//     h1 {
-//         margin-bottom: 19px;
-//     }
-//     .social {
-//         margin-top: 58px;
-//         a {
-//             margin: 0 14.5px;
-//         }
-//     }
-// }
-
-// .current-menu-item:first-of-type a {
-//     color: var(--black) !important;
-// }
-
 
 #content {
     margin: 0;
@@ -1006,7 +978,13 @@ header {
     .content-section {
         background-color: var(--pri-100);
         padding: var(--space-40) var(--space-sm) var(--space-96);
-
+        [data-aos= "fadeIn"]{
+            opacity: 0;  
+        }
+        &.aos-animate{
+            opacity: 1;
+            transform: translateY(-50%) !important;
+        }
         @media @min768 {
             padding-inline: var(--space-40);
         }
@@ -1640,35 +1618,26 @@ header {
 
     .services {
         .container {
-            .slick-current {
-                h3 {
-                    color: var(--sec-100);
-                }
-            }
 
-            .nav-mobile {
-                @media @max992 {
-                    margin-block: var(--space-40);
-                }
-
-                @media @min992 {
-                    display: none;
+            .slider-div{
+                display: grid;
+                grid-template-columns: 100%;
+                padding-top: var(--space-40);
+                align-items: center;
+                gap: var(--space-40);
+                @media @min992{
+                    grid-template-columns: 40% 60%;
+                    padding-top: var(--space-lg);
+                    gap: 0px;
                 }
             }
 
             .service-slider-main {
-                padding-top: var(--space-lg);
-
                 @media @max992 {
                     padding-inline: var(--space-40);
-                    padding-top: var(--space-40);
                 }
 
                 @media @min992 {
-                    width: 55%;
-                    display: inline-block;
-                    .right();
-                    float: right;
                     padding-bottom: var(--space-lg);
                 }
 
@@ -1686,14 +1655,29 @@ header {
 
                 }
             }
+            .service-slider-arrows{
+                .display-flex(flex, var(--space-40), row, unset);
+                justify-content: center;
+                svg{
+                    height: 40px;
+                    width: 22px;
+                }
+                @media @min992{
+                    display: none;
+                }
+                .slick-disabled{
+                    svg{
+                        path{
+                            fill: var(--ter-100);
+                        }
+                    }
+                }
+            }
 
             .nav-desktop {
-                display: inline-block;
-                width: 44%;
-                transform: translateY(50%);
 
                 @media @max992 {
-                    display: none;
+                    order: 1;
                 }
             }
 
@@ -1703,7 +1687,6 @@ header {
                 }
 
                 @media @min992 {
-                    padding-inline: 15%;
 
                     h3 {
                         cursor: pointer;

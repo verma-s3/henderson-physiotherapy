@@ -1,7 +1,7 @@
 <div class="rehab-service-page">
 	<div class="return-to-work padding-tb" id="return-to-work">
 		{% set page = post.meta('return_to_work') %}
-		<div class="container">
+		<div class="container" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 			<h2 class="center">{{page.title}}</h2>
 			<p class="subtitle center h4">{{page.subtitle}}</p>
 			<div class="content center">{{page.description}}</div>
@@ -23,13 +23,13 @@
 	<div class="rehabilitation" id="rehabilitation">
 		{% set page = post.meta('rehabilitation') %}
 		<div class="container padding">
-			<div class="details-section">
+			<div class="details-section" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				<h2 class="center">{{page.title}}</h2>
 				<p class="subtitle center h4">{{page.subtitle}}</p>
 				<div class="content">{{page.description}}</div>
 			</div>
 			{% set help = page.rehab_help %}
-			<div class="types">
+			<div class="types" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				<h3 class="center h4">{{help.title}}</h3>
 				<div class="list-type">
 					{% for list in help.list %}
@@ -46,12 +46,12 @@
 	<div class="neuro-rehab" id="neuro-rehab">
 		{% set page = post.meta('neuro_rehab') %}
 		<div class="container padding-top">
-			<h2 class="center">{{page.title}}</h2>
-			<p class="subtitle center h4">{{page.subtitle}}</p>
-			<div class="content center">{{page.description}}</div>
+			<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.title}}</h2>
+			<p class="subtitle center h4" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.subtitle}}</p>
+			<div class="content center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.description}}</div>
 			{% set cond = page.conditions %}
 			{% set help = page.help %}
-			<div class="types">
+			<div class="types" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				<h3 class="center h4">{{cond.title}}</h3>
 				<div class="list-type">
 					{% for list in cond.list %}
@@ -63,7 +63,7 @@
 				</div>
 			</div>
 
-			<div class="conditions-list">
+			<div class="conditions-list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				<h3 class="center h4">{{help.title}}</h3>
 				<div class="content center">{{help.desc}}</div>
 				<div class="list-type">

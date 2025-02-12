@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
     $('header').toggleClass('header-color');
     $('#overlay').toggleClass('open');
     $('html').toggleClass('hidden');
-     if ($('header').hasClass('fixed-header')) {
+    if ($('header').hasClass('fixed-header')) {
       $('header').toggleClass('overlay-header');
     }
   });
@@ -41,7 +41,7 @@ jQuery(document).ready(function ($) {
 
 
   AOS.init({
-    duration: 1200,
+    duration: 1000,
     easing: 'ease-in-quad',
     disable: 'mobile',
     once: true
@@ -180,31 +180,44 @@ jQuery(document).ready(function ($) {
   $('.service-slider-main').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: false,
+    infinite: false,
+    prevArrow: $('.serviceArrowPrev'),
+    nextArrow: $('.serviceArrowNext'),
     // speed: 500,
     // fade: true,
     cssEase: 'linear',
-    asNavFor: '.service-slider-nav'
+    asNavFor: '.service-slider-nav',
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          adaptiveHeight: true,
+        }
+      }
+    ]
   });
   $('.service-slider-nav').slick({
     slidesToShow: 4,
     slidesToScroll: 4,
     asNavFor: '.service-slider-main',
     dots: false,
-    centerMode: false,
+    infinite: false,
+    vertical: true,
     focusOnSelect: true,
-    vertical: true
   });
 
   // slick carousel go to slide on hover
-  $('.service-slider-nav .slick-slide').hover(function () {
-    var index = $(this).data('index');
-    $('.service-slider-main .slick-slide').slick('slickGoTo', index);
+  $('.service-slider-nav .slick-slide').on('mouseenter', function () {
+    // $(this).trigger('click');
+    let slideIndex = $(this).data("slick-index");
+    console.log(slideIndex)
+    $('.service-slider-main').slick('slickGoTo', slideIndex);
   });
 
   // On click, navigate to a new page
   $('.service-slider-nav .slick-slide').click(function () {
     var url = $(this).data('url');
+    console.log(url)
     if (url) {
       window.location.href = url;
     }

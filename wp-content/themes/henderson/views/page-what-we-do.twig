@@ -5,7 +5,7 @@
 {% block content %}
 	<section class="{{field.slug}}-page padding-lr" id="{{field.slug}}-page">
 		<div class="container">
-			<div class="page-description padding">
+			<div class="page-description padding" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				{% set page = field.meta('page_description') %}
 				<div class="wrapper">
 					<h2>{{page.title}}</h2>
@@ -18,10 +18,11 @@
 			<div class="services container margin-bottom" id="services">
 				{% set page = field.meta('services') %}
 				<div class="wrapper padding">
-					<h2 class="center">{{page.title}}</h2>
+					<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.title}}</h2>
                     <div class="services-list padding-top">
                         {% for list in page.list %}
-                            <div class="list">
+						{% set delay = (delay|default(100)) + 100 %}
+                            <div class="list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="{{delay}}">
                                 <div class="logo">{{ function('file_get_contents', Image(list.logo).src) }}</div>
                                 <h3 class="h5">{{list.title}}</h3>
                                 <div class="content">{{list.desc}}</div>

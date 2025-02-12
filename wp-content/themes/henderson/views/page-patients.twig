@@ -4,7 +4,7 @@
 
 {% block content %}
 	<section class="{{field.slug}}-page" id="{{field.slug}}-page">
-		<div class="page-description padding" id="page-description">
+		<div class="page-description padding" id="page-description" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 			<div class="container">
 				<div class="content">
 					{{field.meta('page_description')}}
@@ -15,7 +15,7 @@
 		<div class="what-to-expect padding-lr" id="what-to-expect">
 			{% set what = field.meta('what_to_expect') %}
 			<div class="container">
-				<div class="section-details">
+				<div class="section-details" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 					<h2 class="center">{{what.title}}</h2>
 					<div class="content center">
 						{{what.description}}
@@ -24,7 +24,8 @@
 				<div class="expectations">
 					{% for list in what.expect_list %}
 						{% set count = (count|default(0)) + 1 %}
-						<div class="list">
+						{% set delay = (delay|default(100)) + 100 %}
+						<div class="list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="{{delay}}">
 							<h3 class="h5">{{count}}.
 								{{list.title}}</h3>
 							<div class="content">{{list.desc}}</div>
@@ -37,7 +38,7 @@
 		<div class="preparations-for-visit padding" id="preparations-for-visit">
 			{% set prep = field.meta('preparations') %}
 			<div class="container">
-				<div class="section-details">
+				<div class="section-details" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 					<h2 class="center">{{prep.title}}</h2>
 					<div class="content center">
 						{{prep.description}}
@@ -45,7 +46,8 @@
 				</div>
 				<div class="preparations">
 					{% for list in prep.preparations_list %}
-						<div class="list">
+					{% set delay = (delay|default(100)) + 100 %}
+						<div class="list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="{{delay}}">
 							<div class="logo">
 								{{ function('file_get_contents', Image(list.logo).src) }}
 							</div>
@@ -62,7 +64,7 @@
 			<div class="container">
 				<div class="wrapper padding">
 					<div class="section-details">
-						<h2 class="center">{{form.title}}</h2>
+						<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{form.title}}</h2>
 						{# <div class="content center">
 							{{form.description}}
 						</div> #}

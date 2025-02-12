@@ -2,9 +2,9 @@
 	<div class="what-is-acupuncture padding-tb" id="what-is-acupuncture">
 		{% set page = post.meta('what_is_acup') %}
 		<div class="container">
-			<h2 class="center">{{page.title}}</h2>
-			<div class="content center">{{page.desc}}</div>
-			<div class="key-areas">
+			<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.title}}</h2>
+			<div class="content center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.desc}}</div>
+			<div class="key-areas" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				{% for key in page.key_areas %}
 					<div class="key-area center">
 						<div class="logo">
@@ -20,9 +20,9 @@
 	<div class="conditions-treats" id="conditions-treats">
 		{% set page = post.meta('conditions') %}
 		<div class="container padding">
-			<h2 class="center">{{page.title}}</h2>
-			<div class="content center">{{page.description}}</div>
-			<div class="conditions-list">
+			<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.title}}</h2>
+			<div class="content center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.description}}</div>
+			<div class="conditions-list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				{% for list in page.conditions_list %}
 					<div class="list">
 						<div class="logo">{{ function('file_get_contents', Image(list.logo).src) }}</div>
@@ -36,9 +36,9 @@
 	<div class="benefits-of-acupuncture padding-top" id="benefits-of-acupuncture">
 		{% set page = post.meta('benefits') %}
 		<div class="container">
-			<h2 class="center">{{page.title}}</h2>
-			<div class="content center">{{page.description}}</div>
-			<div class="conditions-list">
+			<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.title}}</h2>
+			<div class="content center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.description}}</div>
+			<div class="conditions-list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				{% for list in page.benefits_list %}
 					<div class="list">
 						<h3 class="h5">{{list.title}}</h3>
@@ -46,7 +46,7 @@
 					</div>
 				{% endfor %}
 			</div>
-			<div class="tagline h5">{{page.section_tagline}}</div>
+			<div class="tagline h5" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.section_tagline}}</div>
 		</div>
 	</div>
 </div>

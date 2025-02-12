@@ -2,8 +2,8 @@
 	<div class="types-of-massage padding-tb" id="types-of-massage">
 		{% set type = post.meta('types') %}
 		<div class="container">
-			<h2 class="center">{{type.title}}</h2>
-			<div class="types-list">
+			<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{type.title}}</h2>
+			<div class="types-list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				{% for list in type.types %}
 					<div class="list">
 						<div class="logo">
@@ -20,9 +20,9 @@
 	<div class="techniques-approaches" id="techniques-approaches">
 		{% set tech = post.meta('techniques') %}
 		<div class="container">
-			<h2 class="center">{{tech.main_title}}</h2>
-			<div class="content">{{tech.techniques_description}}</div>
-			<div class="techniquess-list">
+			<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{tech.main_title}}</h2>
+			<div class="content" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{tech.techniques_description}}</div>
+			<div class="techniquess-list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				{% set list = tech.techniques %}
 				<div class="list">
 					<h3 class="center">{{list.title}}</h3>

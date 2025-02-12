@@ -7,7 +7,7 @@
 		<div class="page-description padding" id="page-description">
 			<div class="page-details">
 				{% set page = field.meta('page_desc') %}
-				<div class="container">
+				<div class="container" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 					<h2 class="center">{{page.title}}</h2>
 					<div class="content">{{page.desc}}</div>
 				</div>
@@ -15,10 +15,11 @@
 			<div class="why-henderson container">
 				{% set why = field.meta('why_henderson') %}
 				<div class="wrapper padding-tb">
-					<h2 class="h3">{{why.title}}</h2>
+					<h2 class="h3" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{why.title}}</h2>
 					<div class="section-details">
 						{% for feat in why.features %}
-							<div class="features">
+						{% set delay = (delay|default(100)) + 100 %}
+							<div class="features" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="{{delay}}">
 								<div class="logo">
 									{{ function('file_get_contents', Image(feat.logo).src) }}
 								</div>
@@ -42,28 +43,31 @@
 
 		<div class="services" id="services">
 			{% set page = field.meta('services') %}
-			<div class="container">
+			<div class="container"  data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				<h2 class="center">{{page.title}}</h2>
-				<div class="service-slider-nav nav-desktop">
-					{% for item in page.service_list %}
-						<div class="name-section" data-index="{{ forloop.index0 }}" data-url="{{ item.link }}">
-							<h3 class="">{{item.service_name}}</h3>
+				<div class="slider-div">
+					<div class="service-slider-nav nav-desktop">
+						{% for item in page.service_list %}
+							<div class="name-section" data-index="{{ loop.index0 }}" data-url="{{ item.link }}">
+								<h3 class="">{{item.service_name}}</h3>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="service-slider-main">
+						{% for item in page.service_list %}
+							<div class="image-section">
+								<img src="{{Image(item.image).src}}" alt="{{Image(item.image).alt}}" class="img-responsive">
+							</div>
+						{% endfor %}
+					</div>
+					<div class="service-slider-arrows mobile-view">
+						<div class="serviceArrowPrev">
+							{{ source(directory ~ '/static/images/left-arrow.svg') }}
 						</div>
-					{% endfor %}
-				</div>
-				<div class="service-slider-main">
-					{% for item in page.service_list %}
-						<div class="image-section">
-							<img src="{{Image(item.image).src}}" alt="{{Image(item.image).alt}}" class="img-responsive">
+						<div class="serviceArrowNext transform">
+							{{ source(directory ~ '/static/images/left-arrow.svg') }}
 						</div>
-					{% endfor %}
-				</div>
-				<div class="service-slider-nav nav-mobile">
-					{% for item in page.service_list %}
-						<div class="name-section" data-index="{{ forloop.index0 }}" data-url="{{ item.link }}">
-							<h3 class="">{{item.service_name}}</h3>
-						</div>
-					{% endfor %}
+					</div>
 				</div>
 				<div class="btn">
 					<a href="{{page.button.link}}" aria-label="book now" target="_blank" rel="noopener noreferrer" class="custom-btn">{{page.button.name}}</a>
@@ -82,11 +86,11 @@
 						</div>
 						<div class="visit-details">
 							<div class="wrapper">
-								<h2 class="center">{{page.title}}</h2>
-								<div class="content center h4">
+								<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.title}}</h2>
+								<div class="content center h4" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 									{{page.subtitle}}
 								</div>
-								<div class="feature-img-section">
+								<div class="feature-img-section" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 									<img src="{{Image(page.feature_image_dk).src}}" alt="{{Image(page.feature_image_dk).alt}}" class="img-responsive desktop-view">
 									<img src="{{Image(page.feature_image_mb).src}}" alt="{{Image(page.feature_image_mb).alt}}" class="img-responsive mobile-view">
 								</div>
@@ -96,12 +100,13 @@
 					{# Assessments #}
 					<div class="assessments" id="assessments">
 						{% set asses = page.assessment_details %}
-						<h2 class="center">{{asses.title}}</h2>
+						<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{asses.title}}</h2>
 						<div class="types-details">
-							<h3 class="h4 center">{{asses.types_title}}</h3>
+							<h3 class="h4 center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{asses.types_title}}</h3>
 							<div class="list-details">
 								{% for list in asses.types %}
-									<div class="list">
+								{% set delay = (delay|default(100)) + 100 %}
+									<div class="list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="{{delay}}">
 										<div class="logo">
 											{{ function('file_get_contents', Image(list.logo).src) }}
 										</div>
@@ -112,18 +117,19 @@
 							</div>
 						</div>
 						<div class="expect-details">
-							<h3 class="h4 center">{{asses.what_to_expect_title}}</h3>
+							<h3 class="h4 center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{asses.what_to_expect_title}}</h3>
 							<div class="list-details">
 								{% for list in asses.list_what_to_expect %}
 									{% set count = (count|default(0)) + 1 %}
-									<div class="list">
+									{% set delay = (delay|default(100)) + 100 %}
+									<div class="list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="{{delay}}">
 										<h4 class="h5">{{count}}.
 											{{list.title}}</h4>
 										<p class="content">{{list.desc}}</p>
 									</div>
 								{% endfor %}
 							</div>
-							<div class="btn">
+							<div class="btn" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 								<a href="{{asses.button.link}}" aria-label="book now" target="_blank" rel="noopener noreferrer" class="reverse-btn">{{asses.button.name}}</a>
 							</div>
 						</div>
@@ -132,12 +138,13 @@
 					<div class="follow-up-appointments" id="follow-up-appointments">
 						{% set appt = page.appointment %}
 						<div class="container follow-details">
-							<h2 class="center">{{appt.main_title}}</h2>
-							<p class="subtitle center h4">{{appt.subtitle}}</p>
+							<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{appt.main_title}}</h2>
+							<p class="subtitle center h4" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{appt.subtitle}}</p>
 							<div class="list-details">
 								{% for list in appt.follow_up_details %}
 									{% set count = (count|default(0)) + 1 %}
-									<div class="list">
+									{% set delay = (delay|default(100)) + 100 %}
+									<div class="list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="{{delay}}">
 										<h4 class="h5">{{count}}.
 											{{list.title}}</h4>
 										<p class="content">{{list.desc}}</p>
@@ -155,8 +162,8 @@
 			{% set page = field.meta('question') %}
 			<div class="container">
 				<div class="booking-details center padding">
-					<h2>{{page.title}}</h2>
-					<div class="btns">
+					<h2 data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.title}}</h2>
+					<div class="btns" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 						<a href="tel:{{page.group.link}}" class="custom-btn">{{page.group.name}}</a>
 					</div>
 				</div>
@@ -174,11 +181,11 @@
 						</div>
 						<div class="visit-details">
 							<div class="wrapper">
-								<h2 class="center">{{page.title}}</h2>
-								<p class="subtitle center h4">
+								<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.title}}</h2>
+								<p class="subtitle center h4" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 									{{page.subtitle}}
 								</p>
-								<div class="content center">
+								<div class="content center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 									{{page.desc}}
 								</div>
 							</div>
@@ -188,10 +195,11 @@
 					<div class="conditions-details" id="conditions-details">
 						{% set con = page.condition_details %}
 						<div class="wrapper">
-							<h2 class="center h4">{{con.main_title}}</h2>
+							<h2 class="center h4" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{con.main_title}}</h2>
 							<div class="list-details">
 								{% for list in con.list %}
-									<div class="list-items">
+								{% set delay = (delay|default(100)) + 100 %}
+									<div class="list-items" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="{{delay}}">
 										<h3 class="h5">{{list.title}}</h3>
 										{% set text = list.desc %}
 										{% set text_length = text|length %}
@@ -210,7 +218,7 @@
 								{% endfor %}
 							</div>
 							<a href="javascript:void(0);" class="view-all-btn">View All</a>
-							<div class="btn">
+							<div class="btn" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 								{% set asses = field.meta('assessment_details').assessment_details %}
 								<a href="{{asses.button.link}}" aria-label="book now" target="_blank" rel="noopener noreferrer" class="reverse-btn">{{asses.button.name}}</a>
 							</div>
@@ -225,10 +233,10 @@
 			{% set page = field.meta('insights_and_tips') %}
 			<div class="container">
 				<div class="details-section">
-					<h2 class="center">{{page.title}}</h2>
-					<div class="content center">{{page.desc}}</div>
+					<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.title}}</h2>
+					<div class="content center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{page.desc}}</div>
 				</div>
-				<div class="news-slider-section">
+				<div class="news-slider-section" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 					<div class="insights-section">
 						<div class="news-slider-arrows desktop-view">
 							<div class="prevArrow">
@@ -272,17 +280,17 @@
 					</div>
 
 				</div>
-				<div class="btn">
+				<div class="btn" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 					<a href="/news-insights/" class="custom-btn" aria-label="News and Insights Page">View All</a>
 				</div>
 			</div>
 		</div>
 
 		{# <div class="social-media" id="social-media">
-									<div class="container">
-										<h2 class="center">Social Media</h2>
-									</div>
-								</div> #}
+																	<div class="container">
+																		<h2 class="center">Social Media</h2>
+																	</div>
+																</div> #}
 
 		{% if field.meta('do_you_want_to_add_faq') == true %}
 			{% set page = field.meta('faq') %}
@@ -292,7 +300,7 @@
 		<div class="our-companies {% if field.meta('do_you_want_to_add_faq') == true %}padding-top{% endif %}" id="our-companies">
 			{% set page = field.meta('our_companies') %}
 			<div class="container">
-				<div class="content-details padding">
+				<div class="content-details padding" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 					<h2 class="">{{page.title}}</h2>
 					<div class="content">{{page.description}}</div>
 					<div class="company-details">

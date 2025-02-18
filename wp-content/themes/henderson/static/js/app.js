@@ -36,7 +36,7 @@ jQuery(document).ready(function ($) {
 
   $(window).resize(function () {
     fixedHeaderOnScroll();
-    conditionsTreat();
+    // conditionsTreat();
   });
 
 

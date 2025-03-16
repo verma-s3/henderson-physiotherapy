@@ -1616,6 +1616,52 @@ header {
         }
     }
 
+    .social-media{
+        &.media-div-padding{
+            padding-top: 0px !important;    
+        }
+        .instagram-feed-div{
+            padding-top: var(--space-40);
+            @media @min992{
+                padding-top: var(--space-lg);
+            }
+            .insta-logo{
+                height: 40px;
+                width: 40px;
+                aspect-ratio: 1;
+                object-fit: cover;
+                @media @min992{
+                    height: 80px;
+                    width: 80px;
+                }
+            }
+            .instagram-posts{
+                padding-top: var(--space-40);
+                #sb_instagram{
+                    img{
+                        border-radius: 10px;
+                    }
+                }
+            }
+            #sbi_load{
+                margin-top: var(--space-40);
+                a{
+                    .custom-btn() !important;
+                    box-shadow: none !important;
+                    span{
+                        color: var(--white);
+                        transition: all .3s ease-in-out;
+                    }
+                    &:hover{
+                        span{
+                            color: var(--pri-100);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .services {
         .container {
 

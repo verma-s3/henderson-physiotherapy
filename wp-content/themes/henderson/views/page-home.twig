@@ -18,7 +18,7 @@
 					<h2 class="h3" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{why.title}}</h2>
 					<div class="section-details">
 						{% for feat in why.features %}
-						{% set delay = (delay|default(100)) + 100 %}
+							{% set delay = (delay|default(100)) + 100 %}
 							<div class="features" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="{{delay}}">
 								<div class="logo">
 									{{ function('file_get_contents', Image(feat.logo).src) }}
@@ -43,7 +43,7 @@
 
 		<div class="services" id="services">
 			{% set page = field.meta('services') %}
-			<div class="container"  data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
+			<div class="container" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
 				<h2 class="center">{{page.title}}</h2>
 				<div class="slider-div">
 					<div class="service-slider-nav nav-desktop">
@@ -105,7 +105,7 @@
 							<h3 class="h4 center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{asses.types_title}}</h3>
 							<div class="list-details">
 								{% for list in asses.types %}
-								{% set delay = (delay|default(100)) + 100 %}
+									{% set delay = (delay|default(100)) + 100 %}
 									<div class="list" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="{{delay}}">
 										<div class="logo">
 											{{ function('file_get_contents', Image(list.logo).src) }}
@@ -198,7 +198,7 @@
 							<h2 class="center h4" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">{{con.main_title}}</h2>
 							<div class="list-details">
 								{% for list in con.list %}
-								{% set delay = (delay|default(100)) + 100 %}
+									{% set delay = (delay|default(100)) + 100 %}
 									<div class="list-items" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-delay="{{delay}}">
 										<h3 class="h5">{{list.title}}</h3>
 										{% set text = list.desc %}
@@ -286,11 +286,17 @@
 			</div>
 		</div>
 
-		{# <div class="social-media" id="social-media">
-																	<div class="container">
-																		<h2 class="center">Social Media</h2>
-																	</div>
-																</div> #}
+		<div class="social-media padding media-div-padding" id="social-media">
+			<div class="container">
+				<h2 class="center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">Social Media</h2>
+				<div class="instagram-feed-div" data-aos="fade-zoom-in" data-aos-easing="ease-in-back">
+					<img src="{{site.theme.link}}/static/images/instagram-logo.svg" alt="Instagram Logo" class="img-responsive insta-logo">
+					<div class="instagram-posts">
+						{{fn('do_shortcode','[instagram-feed feed=1]')}}
+					</div>
+				</div>
+			</div>
+		</div>
 
 		{% if field.meta('do_you_want_to_add_faq') == true %}
 			{% set page = field.meta('faq') %}

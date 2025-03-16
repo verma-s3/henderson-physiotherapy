@@ -41,11 +41,14 @@ jQuery(document).ready(function ($) {
 
 
   AOS.init({
+    startEvent: 'DOMContentLoaded',
     duration: 1000,
     easing: 'ease-in-quad',
     disable: 'mobile',
     once: true
   });
+
+  AOS.refresh();
 
   function readMore($readmore) {
     var $this = $readmore;

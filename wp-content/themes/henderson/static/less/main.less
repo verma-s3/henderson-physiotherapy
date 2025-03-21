@@ -965,7 +965,7 @@ header {
 
             .image-section {
                 img {
-                    @media @min1200 {
+                    @media @min1500 {
                         height: calc(100vh - 142px);
                         object-position: right;
                         object-fit: cover;
@@ -1675,6 +1675,9 @@ header {
                     grid-template-columns: 40% 60%;
                     padding-top: var(--space-lg);
                     gap: 0px;
+                    .slick-list, .slick-track{
+                        height: 100%;
+                    }
                 }
             }
 
